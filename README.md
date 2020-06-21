@@ -15,7 +15,7 @@
 |image|string|null: false|
 ### Association
 - has_many :purchases
-- has_many :plusimages
+- has_many :plusimages, dependent: :destroy
 - belongs_to :user
 - belongs_to :brand
 - belongs_to :category
@@ -34,9 +34,9 @@
 |destination|references|null: false, foreign_key: true|
 |credit_id|references|foreign_key: true|
 ### Association
-- has_one :destination
-- has_one :credit
-- has_many :items
+- has_one :destination, dependent: :destroy
+- has_one :credit, dependent: :destroy
+- has_many :items, dependent: :destroy
 - has_many :purchases
 
 ## purchasesテーブル
