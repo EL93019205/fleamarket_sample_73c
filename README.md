@@ -30,8 +30,6 @@
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
 |birthday|date|null: false|
-|destination|references|null: false, foreign_key: true|
-|credit_id|references|foreign_key: true|
 ### Association
 - has_one :destination, dependent: :destroy
 - has_one :credit, dependent: :destroy
