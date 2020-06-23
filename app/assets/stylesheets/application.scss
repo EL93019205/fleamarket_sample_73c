@@ -1,0 +1,15 @@
+@import "reset";
+@import "header";
+@import "footer";
+@import "banner";
+@import "items/topIntroduction";
+@import "items/topMiddleDl";
+@import "items/topKeyFeatures";
+@import "items/pickupContainer";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+* {
+  box-sizing: border-box;
+}
