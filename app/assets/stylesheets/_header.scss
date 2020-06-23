@@ -41,5 +41,26 @@
         }
       }
     }
+    .bottom {
+      display: flex;
+      font-size: 14px;
+      margin: 0 auto 10px;
+      max-width: 1040px;
+      .nav {
+        display: flex;
+        .nav__item {
+          padding: 0 0 0 16px;
+          a {
+            color: #333;
+            line-height: 32px;
+            padding-right: 30px;
+            text-decoration: none;
+          }
+        }
+        .nav__item--first {
+          padding: 0;
+        }
+      }
+    }
   }
 }

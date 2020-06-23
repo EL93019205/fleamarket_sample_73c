@@ -8,3 +8,8 @@
         %button{class: "searchBox__button", type: "submit"}
           %img{src: "/assets/icon-search 1.png", class: "searchBox__button__img"}
     .bottom
+      %ul{class: "nav"}
+        %li{class: "nav__item nav__item--first"}
+          = link_to "カテゴリー", "#", class: "category_button" 
+        %li{class: "nav__item"}
+          = link_to "ブランド", "#", class: "brand_button" 
