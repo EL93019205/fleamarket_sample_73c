@@ -44,6 +44,7 @@
     .bottom {
       display: flex;
       font-size: 14px;
+      justify-content: space-between;
       margin: 0 auto 10px;
       max-width: 1040px;
       .nav {
@@ -56,9 +57,22 @@
             padding-right: 30px;
             text-decoration: none;
           }
+          a:hover {
+            color: #ffb340;
+          }
         }
         .nav__item--first {
           padding: 0;
+        }
+      }
+      .userNav {
+        display: flex;
+        &__item {
+          color: #333;
+          display: block;
+          line-height: 32px;
+          padding-left: 16px;
+          text-decoration: none;
         }
       }
     }
