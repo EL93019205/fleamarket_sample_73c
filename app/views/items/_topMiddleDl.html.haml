@@ -1,2 +1,15 @@
 .topMiddleDl
-  ここがミドルです
+  .wrapper
+    %h2
+      会員数日本一位
+    %p
+      FURIMAは、フリマアプリで最も人気。
+      %br
+      出品・購入回数も業界最多です！
+      %br
+      ほしかったあの商品に出会えるかもしれません。
+    .appButtons
+      = link_to "#", class: "appStore" do
+        %img{src: "/assets/app-store-badge.svg",class: "appStoreButton"}
+      = link_to "#", class: "googlePlay" do
+        %img{src: "/assets/google-play-badge.svg",class: "googlePlayButton"}
