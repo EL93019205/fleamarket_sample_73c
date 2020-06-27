@@ -1,3 +1,40 @@
 .topMiddleDl {
-  background-color: blue;
+  align-items: center;
+  background-image: url(/assets/bg-topMiddleDl-pict.jpg);
+  background-position: bottom right;
+  background-size: cover;
+  display: flex;
+  height: 400px;
+  .wrapper {
+    color: #fff;
+    margin: 0 auto;
+    max-width: 1040px;
+    text-align: left;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    width: 100%;
+    h2 {
+      font-size: 27px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+      margin: 20px 0 30px;
+    }
+    .appButtons {
+      display: flex;
+      .appStore {
+        margin-right: 10px;
+        .appStoreButton {
+          width: 180px;
+        }
+      }
+      .googlePlay {
+        .googlePlayButton {
+          width: 180px;
+        }
+      }
+    }
+  }
 }

@@ -1,3 +1,49 @@
 .topIntroduction {
-  background-color: blue;
+  align-items: center;
+  background-image: url(/assets/bg-mainVisual-pict_pc.jpg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 560px;
+  padding: 0 60px;
+  width: 100%;
+  .wrapper {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding-top: 35px;
+    width: 100%;
+    .title {
+      color: #fff;
+      font-size: 60px;
+      line-height: 1.2;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    .subTitle {
+      color: #fff;
+      font-size: 18px;
+      line-height: 1.77778;
+      margin-top: 16px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    .appButtons {
+      display: flex;
+      margin-top: 24px;
+      .appStore {
+        margin-right: 10px;
+        width: 180px;
+        .appAtoreButton {
+          width: 100%;
+          vertical-align: bottom;
+        }
+      }
+      .googlePlay {
+        width: 180px;
+        .googlePlayButton {
+          width: 100%;
+          vertical-align: bottom;
+        }
+      }
+    }
+  }
 }
