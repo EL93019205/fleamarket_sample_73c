@@ -8,7 +8,7 @@
       .productList
         %a{:href => "/products/8"}
           %figure.productList--img
-            %img{ src: "assets/sample1.jpeg" }
+            = image_tag asset_path('sample1.jpeg')
           .productList--body
             %h3.name ee
             .details
@@ -20,7 +20,7 @@
       .productList
         %a{:href => "/products/3"}
           %figure.productList--img
-            %img{ src: "assets/sample2.png" }
+            = image_tag asset_path('sample2.png')
           .productList--body
             %h3.name product3
             .details
@@ -32,7 +32,7 @@
       .productList
         %a{:href => "/products/2"}
           %figure.productList--img
-            %img{ src: "assets/sample3.png" }
+            = image_tag asset_path('sample3.png')
           .productList--body
             %h3.name product2
             .details
@@ -44,7 +44,7 @@
       .productList
         %a{:href => "/products/1"}
           %figure.productList--img
-            %img{ src: "assets/sample4.png" }
+            = image_tag asset_path('sample4.png')
           .productList--body
             %h3.name product1
             .details
