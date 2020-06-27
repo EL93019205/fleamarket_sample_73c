@@ -6,11 +6,12 @@
     line-height: 1.4;
     margin: 60px 0 25px;
     padding-bottom: 15px;
+    position: relative;
     text-align: center;
   }
   h2::after {
     background-color: #3CCACE;
-    bottom: -366px;
+    bottom: 0;
     content: "";
     height: 4px;
     left: 50%;
