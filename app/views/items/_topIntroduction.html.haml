@@ -9,6 +9,6 @@
         フリマアプリです
     .appButtons
       = link_to "#", class: "appStore" do
-        %img{src: "/assets/app-store-badge.svg",class: "appAtoreButton"}
+        = image_tag asset_path("app-store-badge.svg"), class: "appAtoreButton"
       = link_to "#", class: "googlePlay" do
-        %img{src: "/assets/google-play-badge.svg",class: "googlePlayButton"}
+        = image_tag asset_path("google-play-badge.svg"), class: "googlePlayButton"
