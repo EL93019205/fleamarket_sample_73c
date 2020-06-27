@@ -6,7 +6,7 @@
       %form{class: "searchBox"}
         %input{class: "searchBox__input", placeholder: "キーワードから探す"}
         %button{class: "searchBox__button", type: "submit"}
-          %img{src: "/assets/icon-search 1.png", class: "searchBox__button__img"}
+          = image_tag asset_path("icon-search 1.png"), class: "searchBox__button__img"
     .bottom
       %ul{class: "nav"}
         %li{class: "nav__item nav__item--first"}
