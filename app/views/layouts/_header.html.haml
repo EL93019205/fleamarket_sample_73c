@@ -2,7 +2,7 @@
   .wrapper
     .top
       = link_to "#", class: "logo" do
-        %img{src: "/assets/logo.png", class: "logo__img"}
+        = image_tag asset_path("logo.png"), class: "logo__img"
       %form{class: "searchBox"}
         %input{class: "searchBox__input", placeholder: "キーワードから探す"}
         %button{class: "searchBox__button", type: "submit"}
