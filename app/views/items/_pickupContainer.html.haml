@@ -1,2 +1,55 @@
-.pickupContainer
-  ここがピックアップです
+%section.pickupContainer
+  %h2.head ピックアップカテゴリー
+  .productBox
+    .productBox__Head
+      %a{:href => "#"}
+        %h3.title 新規投稿商品
+    .productBox__Lists
+      .productList
+        %a{:href => "/products/8"}
+          %figure.productList--img
+            %img{ src: "assets/sample1.jpeg" }
+          .productList--body
+            %h3.name ee
+            .details
+              %ul
+                %li 1000円
+                %li
+                  %i.fa.fa-star.likeIcon 0
+              %p (税込)
+      .productList
+        %a{:href => "/products/3"}
+          %figure.productList--img
+            %img{ src: "assets/sample2.png" }
+          .productList--body
+            %h3.name product3
+            .details
+              %ul
+                %li 30000円
+                %li
+                  %i.fa.fa-star.likeIcon 0
+              %p (税込)
+      .productList
+        %a{:href => "/products/2"}
+          %figure.productList--img
+            %img{ src: "assets/sample3.png" }
+          .productList--body
+            %h3.name product2
+            .details
+              %ul
+                %li 20000円
+                %li
+                  %i.fa.fa-star.likeIcon 0
+              %p (税込)
+      .productList
+        %a{:href => "/products/1"}
+          %figure.productList--img
+            %img{ src: "assets/sample4.png" }
+          .productList--body
+            %h3.name product1
+            .details
+              %ul
+                %li 10000円
+                %li
+                  %i.fa.fa-star.likeIcon 1
+              %p (税込)
