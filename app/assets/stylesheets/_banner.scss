@@ -1,3 +1,36 @@
 .banner {
-  background-color: green;
+  background-image: url(bg-appBanner-pict.jpg);
+  position: relative;
+  padding: 100px 40px;
+  background-size: cover;
+  background-position: center;
+}
+.inner {
+  text-align: center;
+  color: #fff;
+  &__title {
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.4;
+  }
+  &__text {
+    font-size: 35px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+  }
+  &__icon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto 0;
+    a:first-child {
+      margin-right: 10px;
+    }
+    .aBtn:hover {
+      opacity: 0.5;
+    }
+    .gBtn:hover {
+      opacity: 0.5;
+    }
+  }
 }

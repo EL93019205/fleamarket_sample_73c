@@ -1,2 +1,9 @@
 .banner
-  バナーです
+  .inner
+    %h2.inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text
+      今すぐ無料ダウンロード!
+    .inner__icon
+      = link_to image_tag(src= "app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg", class: "linkIcon aBtn", size: '180x53'), "#"
+      = link_to image_tag(src= "google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg", class: "linkIcon gBtn", size: '180x53'), "#"
