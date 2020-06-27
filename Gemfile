@@ -82,3 +82,5 @@ gem 'fog-aws'
 
 # ログイン機能
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
