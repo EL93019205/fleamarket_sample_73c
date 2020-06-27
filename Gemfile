@@ -71,5 +71,11 @@ group :production do
   gem 'unicorn'
 end
 
+# フロント関連
 gem 'haml-rails'
 gem 'font-awesome-sass'
+
+# 画像関連
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'

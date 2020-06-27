@@ -3,6 +3,7 @@
 @import "footer";
 @import "banner";
 @import "items/topIntroduction";
+@import "items/topReasons";
 @import "items/topMiddleDl";
 @import "items/topKeyFeatures";
 @import "items/pickupContainer";
@@ -12,4 +13,8 @@
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
 }

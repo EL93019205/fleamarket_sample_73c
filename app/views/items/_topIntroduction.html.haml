@@ -1,2 +1,14 @@
 .topIntroduction
-  ここがトップです
+  .wrapper
+    %h1{class: "title"}
+      %br
+        人生を変えるフリマアプリ
+    %p{class: "subTitle"}
+      FURIMAはだれでもかんたんに出品・購入できる
+      %br
+        フリマアプリです
+    .appButtons
+      = link_to "#", class: "appStore" do
+        %img{src: "/assets/app-store-badge.svg",class: "appAtoreButton"}
+      = link_to "#", class: "googlePlay" do
+        %img{src: "/assets/google-play-badge.svg",class: "googlePlayButton"}
