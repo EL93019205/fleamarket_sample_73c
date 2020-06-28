@@ -76,5 +76,5 @@ class User < ApplicationRecord
 
   # 市区町村
   validates :city,
-    format: { with: /\A[一-龥ぁ-ん]/, message: '市区町村の入力に誤りがあります' 
+    format: { with: /\A[一-龥ぁ-ん]/, message: '市区町村の入力に誤りがあります' }
 end
