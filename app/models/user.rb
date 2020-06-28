@@ -4,60 +4,64 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-# アソシエーション
+  # アソシエーション
   has_one :credit, dependent: :destroy
   has_many :items, dependent: :destroy
   has_many :purchases
 
-# 必須項目(空欄禁止)
-  validates :email, :encrypted_password, :nickname, :famiry_name, :first_name, \
-            :famiry_name_kana, :first_name_kana, :birthday, \
+  # 必須項目(空欄禁止)  
+  #passwordとemailは一旦削除する。
+  validates :nickname, :family_name, :first_name, \
+            :family_name_kana, :first_name_kana, :birthday, \
             :d_family_name, :d_first_name, :d_family_name_kana, :d_first_name_kana, \
             :zipcode, :prefecture, :city, :address, \
             presence: true
 
-# メールアドレス重複防止
-  validates :email, uniqueness: true
+  # メールアドレス重複防止
+  #deviceのvalidationで実装済みの可能性がある為一旦コメントアウト。
+  # validates :email, uniqueness: true
 
-# メールアドレス関連
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
-  validates :email,
-    length: { maximum: 255 },
-    format: { with: VALID_EMAIL_REGEX, message: 'PC・携帯どちらでも可' },
-    uniqueness: { case_sensitive: false }
+  # メールアドレス関連
+  # validates :email,
+  #   length: { maximum: 255 },
+  #   format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i, message: '有効なメールアドレスを入力してください' },
+  #   uniqueness: { case_sensitive: false }
 
-# パスワード関連
-  devise :validatable, password_length:7..15
-  validates :encrypted_password,
-    format: { with: /\A[a-z0-9]+\z/i, message: '7文字以上の半角英数字' }
+  # パスワード関連
+  #devise用のファイルで設定できる可能性があるためにいったんコメントアウト。
+  # devise :validatable, password_length:7..15
 
-# 名前関連
+  #deviceのvalidationで実装済みの可能性がある為一旦コメントアウト。
+  # validates :encrypted_password,
+  #   format: { with: /\A[a-z0-9]+\z/i, message: '7文字以上の半角英数字' }
+
+  # 名前関連
   validates :family_name,
-    format: { with: /\A[一-龥ぁ-ん]/, message: '例)早川' }
+    format: { with: /\A[一-龥ぁ-ん]/, message: '全角で入力してください' }
   validates :first_name,
-    format: { with: /\A[一-龥ぁ-ん]/, message: '例)マイケル' }
-# 名前関連(カナ)
+    format: { with: /\A[一-龥ぁ-ん]/, message: '全角で入力してください' }
+  # 名前関連(カナ)
   validates :family_name_kana,
-    format: { with: /\A([ァ-ン]|ー)+\z/, message: '例)ハヤカワ' }
+    format: { with: /\A([ァ-ン]|ー)+\z/, message: '全角カタカナで入力してください' }
   validates :first_name_kana,
-    format: { with: /\A([ァ-ン]|ー)+\z/, message: '例)マイケル' }
+    format: { with: /\A([ァ-ン]|ー)+\z/, message: '全角カタカナで入力してください' }
 
-# 宛先名関連
+  # 宛先名関連
   validates :d_family_name,
-  format: { with: /\A[一-龥ぁ-ん]/, message: '例)早川' }
+  format: { with: /\A[一-龥ぁ-ん]/, message: '全角で入力してください' }
   validates :d_first_name,
-  format: { with: /\A[一-龥ぁ-ん]/, message: '例)マイケル' }
-# 宛先名関連(カナ)
+  format: { with: /\A[一-龥ぁ-ん]/, message: '全角で入力してください' }
+  # 宛先名関連(カナ)
   validates :d_family_name_kana,
-  format: { with: /\A([ァ-ン]|ー)+\z/, message: '例)ハヤカワ' }
+  format: { with: /\A([ァ-ン]|ー)+\z/, message: '全角カタカナで入力してください' }
   validates :d_first_name_kana,
-  format: { with: /\A([ァ-ン]|ー)+\z/, message: '例)マイケル' }
+  format: { with: /\A([ァ-ン]|ー)+\z/, message: '全角カタカナで入力してください' }
 
-# 郵便番号
+  # 郵便番号
   validates :zipcode,
-    format: { with: /\A\d{7}\z/, message: "は'-'を含めない７桁で入力してください" }
+    format: { with: /\A\d{7}\z/, message: "ハイフン(-)無しで７桁の半角数字で入力してください" }
 
-# 都道府県 
+  # 都道府県 
   enum prefecture: {
     "---":0,
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
@@ -70,8 +74,7 @@ class User < ApplicationRecord
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }
 
-# 市区町村
+  # 市区町村
   validates :city,
-    format: { with: /\A[一-龥ぁ-ん]/, message: '例)名古屋市' }
-
+    format: { with: /\A[一-龥ぁ-ん]/, message: '市区町村の入力に誤りがあります' 
 end
