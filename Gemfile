@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'byebug', platform: :mri
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
