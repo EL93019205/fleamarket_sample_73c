@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_064858) do
+ActiveRecord::Schema.define(version: 2020_06_28_134547) do
+
+  create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "card_fullname", null: false
+    t.string "card_number", limit: 16, null: false
+    t.integer "expiration_year", null: false
+    t.integer "expiration_month", null: false
+    t.string "security_code", limit: 4, null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credits_on_user_id"
+  end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
@@ -55,5 +67,6 @@ ActiveRecord::Schema.define(version: 2020_06_28_064858) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "credits", "users"
   add_foreign_key "images", "items"
 end
