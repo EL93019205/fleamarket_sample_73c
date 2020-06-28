@@ -1,7 +1,7 @@
 .header
   .wrapper
     .top
-      = link_to "#", class: "logo" do
+      = link_to root_path, class: "logo" do
         = image_tag asset_path("logo.png"), class: "logo__img"
       %form{class: "searchBox"}
         %input{class: "searchBox__input", placeholder: "キーワードから探す"}
