@@ -18,16 +18,13 @@
 
   / メールアドレス
   .field
-    = f.label :email, "メールアドレス"
+    = f.label :email
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
 
   / パスワード
   .field
     = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
     %br/
     = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
 
@@ -39,14 +36,14 @@
 
   / お名前(全角)
   .field
-    = f.label :name ,"名前"
+    = f.label :name ,"お名前(全角)"
     %br/
     = f.text_field :family_name,  autocomplete: "family_name", placeholder: "例)前田"
     = f.text_field :first_name,  autocomplete: "first_name", placeholder: "例)飛揚"
 
   / お名前カナ(全角)
   .field
-    = f.label :name_kana ,"名前(カナ)"
+    = f.label :name_kana ,"お名前カナ(全角)"
     %br/
     = f.text_field :first_name_kana,  autocomplete: "family_name_kana", placeholder: "例)マエダ"
     = f.text_field :family_name_kana,  autocomplete: "first_name_kana", placeholder: "例)ヒヨウ"
@@ -59,14 +56,14 @@
 
   / 送付先お名前(全角)
   .field
-    = f.label :d_name ,"送付先お名前"
+    = f.label :d_name ,"送付先お名前(全角)"
     %br/
     = f.text_field :d_family_name,  autocomplete: "d_family_name", placeholder: "例)前田"
     = f.text_field :d_first_name,  autocomplete: "d_first_name", placeholder: "例)飛揚"
 
   / 送付先指名カナ(全角)
   .field
-    = f.label :d_name_kana ,"送付先お名前(カナ)"
+    = f.label :d_name_kana ,"送付先お名前カナ(全角)"
     %br/
     = f.text_field :d_first_name_kana,  autocomplete: "d_family_name_kana", placeholder: "例)マエダ"
     = f.text_field :d_family_name_kana,  autocomplete: "d_first_name_kana", placeholder: "例)ヒヨウ"
@@ -78,17 +75,16 @@
     = f.text_field :zipcode, autocomplete: "zipcode", maxlength: "7", autocomplete: "d_first_name_kana", placeholder: "例)1234567"
 
   / 都道府県
-  /.field
-  /  = f.label :prefecture, "都道府県"
-  /  %br/
-  /  = f.select :prefecture, User.prefectures.keys, {}, {class: 'hoge'}
+  .field
+    = f.label :prefecture, "都道府県"
+    %br/
+    = f.select :prefecture, User.prefectures.keys, {}, {class: 'hoge'}
 
   / 市区町村
   .field
     = f.label :city ,"市区町村"
     %br/
     = f.text_field :city, autocomplete: "city", placeholder: "例)東京都渋谷区恵比寿"
-
 
   / 番地
   .field
@@ -110,7 +106,7 @@
 
   / 送信ボタン
   .actions
-    = f.submit "Sign up"
+    = f.submit "登録"
 
 / パスワード確認用
 = render "users/shared/links"
