@@ -23,13 +23,15 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null: false|
-|password|string|null: false|
+|encrypted_password|string|null: false|
 |email|string|null: false, unique: true|
 |family_name|string|null: false|
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|birthday|date|null: false|
+|birthday_year|integer|null: false|
+|birthday_month|integer|null: false|
+|birthday_day|integer|null: false|
 |d_family_name|string|null: false|
 |d_first_name|string|null: false|
 |d_familiy_name_kana|string|null: false|
