@@ -1,21 +1,116 @@
-%h2 新規会員登録
+/ resourceとは？
+/ →どのようなモデルが来ても大丈夫なようにするためにはresourceにする
+/ どのようなモデル名かはresource_nameになる
+/ asでresource_nameとするとparams[resource_name]で参照できるようになる
+/ form_for(モデル) do f
+/ autocompleteとは？
+
+%h2 会員情報入力
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  / エラー文出力
   = render "users/shared/error_messages", resource: resource
+
+  / ニックネーム
   .field
-    = f.label :email
+    = f.label :nickname, "ニックネーム"
     %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.text_field :nickname,  autocomplete: "nickname", placeholder: "例)最強の前田"
+
+  / メールアドレス
+  .field
+    = f.label :email, "メールアドレス"
+    %br/
+    = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
+
+  / パスワード
   .field
     = f.label :password
     - if @minimum_password_length
       %em
         (#{@minimum_password_length} characters minimum)
     %br/
-    = f.password_field :password, autocomplete: "new-password"
+    = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
+
+  / パスワード確認用
   .field
     = f.label :password_confirmation
     %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
+    = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワードを再度入力"
+
+  / お名前(全角)
+  .field
+    = f.label :name ,"名前"
+    %br/
+    = f.text_field :family_name,  autocomplete: "family_name", placeholder: "例)前田"
+    = f.text_field :first_name,  autocomplete: "first_name", placeholder: "例)飛揚"
+
+  / お名前カナ(全角)
+  .field
+    = f.label :name_kana ,"名前(カナ)"
+    %br/
+    = f.text_field :first_name_kana,  autocomplete: "family_name_kana", placeholder: "例)マエダ"
+    = f.text_field :family_name_kana,  autocomplete: "first_name_kana", placeholder: "例)ヒヨウ"
+
+  / 生年月日
+  .field
+    = f.label :birthday, "生年月日"
+    %br/
+    = f.date_select :birthday, use_month_numbers: true, start_year: (Time.now.year - 150), end_year: (Time.now.year - 18), prompt: "--"
+
+  / 送付先お名前(全角)
+  .field
+    = f.label :d_name ,"送付先お名前"
+    %br/
+    = f.text_field :d_family_name,  autocomplete: "d_family_name", placeholder: "例)前田"
+    = f.text_field :d_first_name,  autocomplete: "d_first_name", placeholder: "例)飛揚"
+
+  / 送付先指名カナ(全角)
+  .field
+    = f.label :d_name_kana ,"送付先お名前(カナ)"
+    %br/
+    = f.text_field :d_first_name_kana,  autocomplete: "d_family_name_kana", placeholder: "例)マエダ"
+    = f.text_field :d_family_name_kana,  autocomplete: "d_first_name_kana", placeholder: "例)ヒヨウ"
+
+  / 郵便番号
+  .field
+    = f.label :zipcode, "郵便番号"
+    %br/
+    = f.text_field :zipcode, autocomplete: "zipcode", maxlength: "7", autocomplete: "d_first_name_kana", placeholder: "例)1234567"
+
+  / 都道府県
+  /.field
+  /  = f.label :prefecture, "都道府県"
+  /  %br/
+  /  = f.select :prefecture, User.prefectures.keys, {}, {class: 'hoge'}
+
+  / 市区町村
+  .field
+    = f.label :city ,"市区町村"
+    %br/
+    = f.text_field :city, autocomplete: "city", placeholder: "例)東京都渋谷区恵比寿"
+
+
+  / 番地
+  .field
+    = f.label :address ,"番地"
+    %br/
+    = f.text_field :address, autocomplete: "address", placeholder: "例)1-3-1"
+
+  / マンション名・ビル名・部屋番号
+  .field
+    = f.label :building_name, "マンション名・ビル名・部屋番号"
+    %br/
+    = f.text_field :building_name, autocomplete: "building_name", placeholder: "例)タワマン52階"
+
+  / 電話番号
+  .field
+    = f.label :phone_number, "電話番号"
+    %br/
+    = f.text_field :phone_number, autocomplete: "phone_number", maxlength: "11", autocomplete: "d_first_name_kana", placeholder: "例)09082882819"
+
+  / 送信ボタン
   .actions
     = f.submit "Sign up"
+
+/ パスワード確認用
 = render "users/shared/links"
