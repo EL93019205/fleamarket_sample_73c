@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   # 必須項目(空欄禁止)  
   #passwordとemailは一旦削除する。
-  validates :nickname, :family_name, :first_name, \
+  validates :nickname, :password_confirmation, :family_name, :first_name, \
             :family_name_kana, :first_name_kana, :birthday, \
             :d_family_name, :d_first_name, :d_family_name_kana, :d_first_name_kana, \
             :zipcode, :prefecture, :city, :address, \
@@ -48,14 +48,14 @@ class User < ApplicationRecord
 
   # 宛先名関連
   validates :d_family_name,
-  format: { with: /\A[一-龥ぁ-ん]/, message: '全角で入力してください' }
+    format: { with: /\A[一-龥ぁ-ん]/, message: '全角で入力してください' }
   validates :d_first_name,
-  format: { with: /\A[一-龥ぁ-ん]/, message: '全角で入力してください' }
+    format: { with: /\A[一-龥ぁ-ん]/, message: '全角で入力してください' }
   # 宛先名関連(カナ)
   validates :d_family_name_kana,
-  format: { with: /\A([ァ-ン]|ー)+\z/, message: '全角カタカナで入力してください' }
+    format: { with: /\A([ァ-ン]|ー)+\z/, message: '全角カタカナで入力してください' }
   validates :d_first_name_kana,
-  format: { with: /\A([ァ-ン]|ー)+\z/, message: '全角カタカナで入力してください' }
+    format: { with: /\A([ァ-ン]|ー)+\z/, message: '全角カタカナで入力してください' }
 
   # 郵便番号
   validates :zipcode,
