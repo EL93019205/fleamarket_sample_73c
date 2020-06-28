@@ -1,13 +1,12 @@
 class AddColumn1ToUser < ActiveRecord::Migration[5.2]
   def change
-    create_table :users do |t|
-      t.string :nickname, null: false
-      t.string :family_name, null: false
-      t.string :first_name, null: false
-      t.string :family_name_kana, null: false
-      t.string :first_name_kana, null: false
-      t.integer :birthday_year, null: false
-      t.integer :birthday_month, null: false
-      t.integer :birthday_day, null: false
+    add_column :users, :nickname, :string, null: false
+    add_column :users, :family_name, :string, null: false
+    add_column :users, :first_name, :string, null: false
+    add_column :users, :family_name_kana, :string, null: false
+    add_column :users, :first_name_kana, :string, null: false
+    add_column :users, :birthday_year, :integer, null: false
+    add_column :users, :birthday_month, :integer, null: false
+    add_column :users, :birthday_day, :integer, null: false
   end
 end
