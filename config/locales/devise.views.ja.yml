@@ -85,3 +85,9 @@ ja:
     unlocks:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
+  errors:
+    messages:
+      not_saved:
+        one: "下記入力に誤りがあります"
+        other: "下記入力に誤りがあります"
+

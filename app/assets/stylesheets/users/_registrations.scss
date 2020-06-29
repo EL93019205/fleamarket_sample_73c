@@ -1,11 +1,9 @@
 .users{
   width: 100%;
-  height: 1930px;
   padding: 0;
   background-color: #F5F5F5;
   &__container{
     width: 700px;
-    height: 100%;
     margin: 0 auto;
     padding-top: 64px;
     padding-bottom: 64px;
@@ -35,7 +33,6 @@
             margin: 0;
           }
           background-color: white;
-          height: 70px;
           margin: 32px 0px 0px;
           position:relative;
           &--label{
@@ -146,6 +143,22 @@
           }
         }
       }
+    }
+  }
+}
+
+.error{
+  width: 343px;
+  margin: 0 auto;
+  &__article{
+    font-size: 16px;
+    color: red;
+  }
+  &__container{
+    &__card{
+      font-size: 11px;
+      color: #333;
+      text-align: left;
     }
   }
 }

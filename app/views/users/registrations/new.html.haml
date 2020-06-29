@@ -5,11 +5,11 @@
 / form_for(モデル) do f
 / autocompleteとは？
 
-= render "users/shared/error_messages", resource: resource
 .users
   .users__container
     .users__container__top
       会員情報入力
+      = render "users/shared/error_messages", resource: resource
     .users__container__bottom
       .users__container__bottom__center
         = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
