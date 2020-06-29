@@ -72,7 +72,7 @@ describe User do
       it 'ユーザー本名(苗字)の不正値入力' do
         user = build(:user, family_name: "ﾔﾏﾀﾞ")
         user.valid?
-        expect(user.errors[:family_name]).to include('全角で入力してください')
+        expect(user.errors[:family_name]).to include('を全角で入力してください')
       end
 
       it 'ユーザー本名(名前)の未入力' do
@@ -84,7 +84,7 @@ describe User do
       it 'ユーザー本名(名前)の不正値入力' do
         user = build(:user, first_name: "ﾀﾛｳ")
         user.valid?
-        expect(user.errors[:first_name]).to include('全角で入力してください')
+        expect(user.errors[:first_name]).to include('を全角で入力してください')
       end
 
       it 'ユーザー本名(苗字カナ)の未入力' do
@@ -96,7 +96,7 @@ describe User do
       it 'ユーザー本名(苗字カナ)の不正値入力' do
         user = build(:user, family_name_kana: "やまだ")
         user.valid?
-        expect(user.errors[:family_name_kana]).to include('全角カタカナで入力してください')
+        expect(user.errors[:family_name_kana]).to include('を全角カタカナで入力してください')
       end
 
       it 'ユーザー本名(名前カナ)の未入力' do
@@ -108,7 +108,7 @@ describe User do
       it 'ユーザー本名(名前カナ)の不正値入力' do
         user = build(:user, first_name_kana: "たろう")
         user.valid?
-        expect(user.errors[:first_name_kana]).to include('全角カタカナで入力してください')
+        expect(user.errors[:first_name_kana]).to include('を全角カタカナで入力してください')
       end
 
       it '生年月日の未入力' do
@@ -126,7 +126,7 @@ describe User do
       it '送付先氏名(苗字)の不正値入力' do
         user = build(:user, d_family_name: "ﾔﾏﾀﾞ")
         user.valid?
-        expect(user.errors[:d_family_name]).to include('全角で入力してください')
+        expect(user.errors[:d_family_name]).to include('を全角で入力してください')
       end
 
       it '送付先氏名(名前)の未入力' do
@@ -138,7 +138,7 @@ describe User do
       it '送付先氏名(名前)の不正値入力' do
         user = build(:user, d_first_name: "ﾀﾛｳ")
         user.valid?
-        expect(user.errors[:d_first_name]).to include('全角で入力してください')
+        expect(user.errors[:d_first_name]).to include('を全角で入力してください')
       end
 
       it '送付先氏名(苗字カナ)の未入力' do
@@ -150,7 +150,7 @@ describe User do
       it '送付先氏名(苗字カナ)の不正値入力' do
         user = build(:user, d_family_name_kana: "やまだ")
         user.valid?
-        expect(user.errors[:d_family_name_kana]).to include('全角カタカナで入力してください')
+        expect(user.errors[:d_family_name_kana]).to include('を全角カタカナで入力してください')
       end
 
       it '送付先氏名(名前カナ)の未入力' do
@@ -162,7 +162,7 @@ describe User do
       it '送付先氏名(名前カナ)の不正値入力' do
         user = build(:user, d_first_name_kana: "たろう")
         user.valid?
-        expect(user.errors[:d_first_name_kana]).to include('全角カタカナで入力してください')
+        expect(user.errors[:d_first_name_kana]).to include('を全角カタカナで入力してください')
       end
 
       it '郵便番号の未入力' do
@@ -174,7 +174,7 @@ describe User do
       it 'ハイフン有りの郵便番号の未入力' do
         user = build(:user, zipcode: "000-0000")
         user.valid?
-        expect(user.errors[:zipcode]).to include('ハイフン(-)無しで７桁の半角数字で入力してください')
+        expect(user.errors[:zipcode]).to include('をハイフン(-)無しで７桁の半角数字で入力してください')
       end
 
       it '都道府県の未入力' do
