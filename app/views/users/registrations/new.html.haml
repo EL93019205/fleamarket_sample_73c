@@ -5,6 +5,7 @@
 / form_for(モデル) do f
 / autocompleteとは？
 
+= render "users/shared/error_messages", resource: resource
 .users
   .users__container
     .users__container__top
@@ -13,11 +14,10 @@
       .users__container__bottom__center
         = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
           / エラー文出力
-          = render "users/shared/error_messages", resource: resource
 
           / ニックネーム
           .users__container__bottom__center__card
-            = f.label :nickname, "ニックネーム", class: "users__container__bottom__center__card--label"
+            = f.label :nickname, class: "users__container__bottom__center__card--label"
             %br/
             = f.text_field :nickname,  autocomplete: "nickname", placeholder: "例)最強の前田", class: "users__container__bottom__center__card--input"
             .users__container__bottom__center__card--required
@@ -39,7 +39,7 @@
             .users__container__bottom__center__card--required
               必須
 
-          / パスワード確認用
+          / 確認用パスワード
           .users__container__bottom__center__card
             = f.label :password_confirmation, class: "users__container__bottom__center__card--label"
             %br/
@@ -49,25 +49,25 @@
 
           / お名前(全角)
           .users__container__bottom__center__card
-            = f.label :name ,"お名前(全角)", class: "users__container__bottom__center__card--label"
+            = f.label :name, class: "users__container__bottom__center__card--label"
             %br/
-            = f.text_field :family_name,  autocomplete: "family_name", placeholder: "例)前田", class: "users__container__bottom__center__card--input--half"
+            = f.text_field :family_name,  autocomplete: "family_name", placeholder: "例)前田", class: "users__container__bottom__center__card--input--half--left"
             = f.text_field :first_name,  autocomplete: "first_name", placeholder: "例)飛揚", class: "users__container__bottom__center__card--input--half"
             .users__container__bottom__center__card--required
               必須
 
           / お名前カナ(全角)
           .users__container__bottom__center__card
-            = f.label :name_kana ,"お名前カナ(全角)", class: "users__container__bottom__center__card--label"
+            = f.label :name_kana, class: "users__container__bottom__center__card--label"
             %br/
-            = f.text_field :first_name_kana,  autocomplete: "family_name_kana", placeholder: "例)マエダ", class: "users__container__bottom__center__card--input--half"
-            = f.text_field :family_name_kana,  autocomplete: "first_name_kana", placeholder: "例)ヒヨウ", class: "users__container__bottom__center__card--input--half"
+            = f.text_field :family_name_kana,  autocomplete: "family_name_kana", placeholder: "例)マエダ", class: "users__container__bottom__center__card--input--half--left"
+            = f.text_field :first_name_kana,  autocomplete: "first_name_kana", placeholder: "例)ヒヨウ", class: "users__container__bottom__center__card--input--half"
             .users__container__bottom__center__card--required
               必須
 
           / 生年月日
           .users__container__bottom__center__card
-            = f.label :birthday, "生年月日", class: "users__container__bottom__center__card--label"
+            = f.label :birthday, class: "users__container__bottom__center__card--label"
             %br/
             = f.date_select :birthday, class: "users__container__bottom__center__card--input--tri", use_month_numbers: true, start_year: (Time.now.year - 150), end_year: (Time.now.year - 18), prompt: "--"
             .users__container__bottom__center__card--year
@@ -81,25 +81,25 @@
 
           / 送付先お名前(全角)
           .users__container__bottom__center__card
-            = f.label :d_name ,"送付先お名前(全角)", class: "users__container__bottom__center__card--label"
+            = f.label :d_name, class: "users__container__bottom__center__card--label"
             %br/
-            = f.text_field :d_family_name,  autocomplete: "d_family_name", placeholder: "例)前田", class: "users__container__bottom__center__card--input--half"
+            = f.text_field :d_family_name,  autocomplete: "d_family_name", placeholder: "例)前田", class: "users__container__bottom__center__card--input--half--left"
             = f.text_field :d_first_name,  autocomplete: "d_first_name", placeholder: "例)飛揚", class: "users__container__bottom__center__card--input--half"
             .users__container__bottom__center__card--required
               必須
 
           / 送付先指名カナ(全角)
           .users__container__bottom__center__card
-            = f.label :d_name_kana ,"送付先お名前カナ(全角)", class: "users__container__bottom__center__card--label"
+            = f.label :d_name_kana, class: "users__container__bottom__center__card--label"
             %br/
-            = f.text_field :d_first_name_kana,  autocomplete: "d_family_name_kana", placeholder: "例)マエダ", class: "users__container__bottom__center__card--input--half"
-            = f.text_field :d_family_name_kana,  autocomplete: "d_first_name_kana", placeholder: "例)ヒヨウ", class: "users__container__bottom__center__card--input--half"
+            = f.text_field :d_family_name_kana,  autocomplete: "d_family_name_kana", placeholder: "例)マエダ", class: "users__container__bottom__center__card--input--half--left"
+            = f.text_field :d_first_name_kana,  autocomplete: "d_first_name_kana", placeholder: "例)ヒヨウ", class: "users__container__bottom__center__card--input--half"
             .users__container__bottom__center__card--required
               必須
 
           / 郵便番号
           .users__container__bottom__center__card
-            = f.label :zipcode, "郵便番号", class: "users__container__bottom__center__card--label"
+            = f.label :zipcode, class: "users__container__bottom__center__card--label"
             %br/
             = f.text_field :zipcode, autocomplete: "zipcode", maxlength: "7", autocomplete: "d_first_name_kana", placeholder: "例)1234567", class: "users__container__bottom__center__card--input"
             .users__container__bottom__center__card--required
@@ -107,7 +107,7 @@
 
           / 都道府県
           .users__container__bottom__center__card
-            = f.label :prefecture, "都道府県", class: "users__container__bottom__center__card--label"
+            = f.label :prefecture, class: "users__container__bottom__center__card--label"
             %br/
             = f.select :prefecture, User.prefectures.keys, {}, class: "users__container__bottom__center__card--input"
             .users__container__bottom__center__card--required
@@ -115,7 +115,7 @@
 
           / 市区町村
           .users__container__bottom__center__card
-            = f.label :city ,"市区町村", class: "users__container__bottom__center__card--label"
+            = f.label :city, class: "users__container__bottom__center__card--label"
             %br/
             = f.text_field :city, autocomplete: "city", placeholder: "例)東京都渋谷区恵比寿", class: "users__container__bottom__center__card--input"
             .users__container__bottom__center__card--required
@@ -123,7 +123,7 @@
 
           / 番地
           .users__container__bottom__center__card
-            = f.label :address ,"番地", class: "users__container__bottom__center__card--label"
+            = f.label :address, class: "users__container__bottom__center__card--label"
             %br/
             = f.text_field :address, autocomplete: "address", placeholder: "例)1-3-1", class: "users__container__bottom__center__card--input"
             .users__container__bottom__center__card--required
@@ -131,7 +131,7 @@
 
           / マンション名・ビル名・部屋番号
           .users__container__bottom__center__card
-            = f.label :building_name, "マンション名・ビル名・部屋番号", class: "users__container__bottom__center__card--label"
+            = f.label :building_name, class: "users__container__bottom__center__card--label"
             %br/
             = f.text_field :building_name, autocomplete: "building_name", placeholder: "例)タワマン52階", class: "users__container__bottom__center__card--input"
             .users__container__bottom__center__card--any
@@ -139,7 +139,7 @@
 
           / 電話番号
           .users__container__bottom__center__card
-            = f.label :phone_number, "電話番号", class: "users__container__bottom__center__card--label"
+            = f.label :phone_number, class: "users__container__bottom__center__card--label"
             %br/
             = f.text_field :phone_number, autocomplete: "phone_number", maxlength: "11", autocomplete: "d_first_name_kana", placeholder: "例)09082882819", class: "users__container__bottom__center__card--input"
             .users__container__bottom__center__card--any

@@ -37,29 +37,29 @@ class User < ApplicationRecord
 
   # 名前関連
   validates :family_name,
-    format: { with: /\A[一-龥ぁ-ん]/, message: '全角で入力してください' }
+    format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'を全角で入力してください' }
   validates :first_name,
-    format: { with: /\A[一-龥ぁ-ん]/, message: '全角で入力してください' }
+    format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'を全角で入力してください' }
   # 名前関連(カナ)
   validates :family_name_kana,
-    format: { with: /\A([ァ-ン]|ー)+\z/, message: '全角カタカナで入力してください' }
+    format: { with: /\A([ァ-ン]|ー)+\z/, message: 'を全角カタカナで入力してください' }
   validates :first_name_kana,
-    format: { with: /\A([ァ-ン]|ー)+\z/, message: '全角カタカナで入力してください' }
+    format: { with: /\A([ァ-ン]|ー)+\z/, message: 'を全角カタカナで入力してください' }
 
   # 宛先名関連
   validates :d_family_name,
-    format: { with: /\A[一-龥ぁ-ん]/, message: '全角で入力してください' }
+    format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'を全角で入力してください' }
   validates :d_first_name,
-    format: { with: /\A[一-龥ぁ-ん]/, message: '全角で入力してください' }
+    format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'を全角で入力してください' }
   # 宛先名関連(カナ)
   validates :d_family_name_kana,
-    format: { with: /\A([ァ-ン]|ー)+\z/, message: '全角カタカナで入力してください' }
+    format: { with: /\A([ァ-ン]|ー)+\z/, message: 'を全角カタカナで入力してください' }
   validates :d_first_name_kana,
-    format: { with: /\A([ァ-ン]|ー)+\z/, message: '全角カタカナで入力してください' }
+    format: { with: /\A([ァ-ン]|ー)+\z/, message: 'を全角カタカナで入力してください' }
 
   # 郵便番号
   validates :zipcode,
-    format: { with: /\A\d{7}\z/, message: "ハイフン(-)無しで７桁の半角数字で入力してください" }
+    format: { with: /\A\d{7}\z/, message: "をハイフン(-)無しで７桁の半角数字で入力してください" }
 
   # 都道府県 
   enum prefecture: {
