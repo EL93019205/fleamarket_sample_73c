@@ -153,12 +153,14 @@
   &__article{
     font-size: 16px;
     color: red;
+    font-weight: bold;
   }
   &__container{
     &__card{
       font-size: 11px;
       color: #333;
       text-align: left;
+      font-weight: bold;
     }
   }
 }

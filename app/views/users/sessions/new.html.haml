@@ -1,6 +1,8 @@
 .container
   .card
     %h2 ログイン
+    .card__border
+      = render "users/shared/error_messages", resource: resource
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .field
         = f.label :email
