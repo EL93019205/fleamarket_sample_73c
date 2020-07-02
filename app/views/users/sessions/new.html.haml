@@ -1,0 +1,17 @@
+.container
+  .card
+    %h2 ログイン
+    .card__border
+      = render "users/shared/error_messages", resource: resource
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
+      .field
+        = f.label :password
+        = f.password_field :password, autocomplete: "current-password", class: "input"
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me, class: "remember"
+      = f.submit "ログイン", class: "submit"
