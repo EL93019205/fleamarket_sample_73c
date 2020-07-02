@@ -11,10 +11,10 @@ class User < ApplicationRecord
 
   # 必須項目(空欄禁止)  
   #passwordとemailは一旦削除する。
-  validates :nickname, :password_confirmation, :family_name, :first_name, \
-            :family_name_kana, :first_name_kana, :birthday, \
-            :d_family_name, :d_first_name, :d_family_name_kana, :d_first_name_kana, \
-            :zipcode, :prefecture, :city, :address, \
+  validates :nickname, :password_confirmation, :family_name, :first_name,
+            :family_name_kana, :first_name_kana, :birthday,
+            :d_family_name, :d_first_name, :d_family_name_kana, :d_first_name_kana,
+            :zipcode, :prefecture, :city, :address,
             presence: true
 
   # メールアドレス重複防止
