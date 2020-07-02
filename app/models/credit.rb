@@ -12,7 +12,7 @@ class Credit < ApplicationRecord
 
   #クレジットカードの名前
   validates :card_fullname,
-    format: { with: /^[A-Z]+\s[A-Z]+\z/, message: 'を半角アルファベット(大文字)で入力してください' }
+    format: { with: /\A[A-Z]+\s[A-Z]+\z/, message: 'を半角アルファベット(大文字)で入力してください' }
 
   #クレジットカード番号, 有効期限
   validates :card_number,
