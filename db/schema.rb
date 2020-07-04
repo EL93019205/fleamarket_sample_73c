@@ -10,17 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_28_134547) do
+ActiveRecord::Schema.define(version: 2020_07_04_041317) do
 
   create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "card_fullname", null: false
     t.string "card_number", limit: 16, null: false
-    t.integer "expiration_year", null: false
-    t.integer "expiration_month", null: false
     t.string "security_code", limit: 4, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "expiration", null: false
     t.index ["user_id"], name: "index_credits_on_user_id"
   end
 
