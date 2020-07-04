@@ -1,3 +1,46 @@
-edit
-%br
-= render 'credits/credit_input'
+.credit
+  .credit__container
+    .credit__container__top
+      = current_user.nickname + "のクレジット編集画面です"
+    .credit__container__bottom
+      .credit__container__bottom__center
+        = form_for [@user, @credit] do |f|
+
+          .credit__container__bottom__center__card
+            = f.label :card_fullname, class: "credit__container__bottom__center__card--label"
+            %br/
+            = f.text_field :card_fullname,  autocomplete: "card_fullname", placeholder: "例)TARO FURIMA", class: "credit__container__bottom__center__card--input"
+            .credit__container__bottom__center__card--required
+              必須
+
+          .credit__container__bottom__center__card
+            = f.label :card_number, class: "credit__container__bottom__center__card--label"
+            %br/
+            = f.text_field :card_number,  autocomplete: "card_number", maxlength: "16", placeholder: "例)1234567891234567", class: "credit__container__bottom__center__card--input"
+            .credit__container__bottom__center__card--required
+              必須
+
+          .credit__container__bottom__center__card
+            = f.label :expiration, class: "credit__container__bottom__center__card--label"
+            %br/
+            = f.date_select :expiration, class: "credit__container__bottom__center__card--input--tri", order:[:month,:year,:day],use_month_numbers: true, discard_day:true, start_year: (Time.now.year - 2000), end_year: (Time.now.year - 2000+10), prompt: "--"
+            .users__container__bottom__center__card--year
+              年
+            .users__container__bottom__center__card--month
+              月
+            .users__container__bottom__center__card--required
+              必須
+
+          .credit__container__bottom__center__card
+            = f.label :security_code, class: "credit__container__bottom__center__card--label"
+            %br/
+            = f.text_field :security_code,  autocomplete: "security_code", maxlength: "4", placeholder: "例)1234", class: "credit__container__bottom__center__card--input"
+            .credit__container__bottom__center__card--required
+              必須
+
+          .credit__container__bottom__center__card
+            = f.submit "登録", class: "credit__container__bottom__center__card--submit"
+
+        .credit__container__bottom__center__card--submit
+          = link_to edit_user_path(current_user.id), class: "credit__container__bottom__center__card--submit--a" do
+            ="キャンセル"
