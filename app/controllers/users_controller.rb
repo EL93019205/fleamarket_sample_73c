@@ -8,8 +8,7 @@ class UsersController < ApplicationController
 private
 
 def correct_user
-  user = User.find(params[:id])
-  redirect_to root_path, alert: '他の人のマイページには飛べません' if user.id != current_user.id
+  redirect_to root_path, alert: '他の人のマイページは見れません' if params[:id].to_i != current_user.id
 end
 
 end
