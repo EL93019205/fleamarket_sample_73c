@@ -29,13 +29,13 @@
                 セキュリティコード
             %tr
               %td
-                MICHAEL HAYAKAWA
+                = @user.credit.card_fullname
               %td
-                1111 2222 3333 4444
+                ●●●● ●●●● ●●●● ●●●●
               %td
-                01/23
+                = @user.credit.expiration.strftime('%m/%y')
               %td
-                1234
+                ●●●●
           .mypage__container__bottom__center--submit
             = link_to edit_user_credit_path(current_user.id), class: "mypage__container__bottom__center--submit--a" do
               = "クレジットカード編集"
