@@ -1,16 +1,48 @@
 / クレジット情報がなけば、新規登録ボタンのみ表示
-= current_user.nickname + "のマイページ編集画面です"
-%br
-= link_to "クレジット情報を新規登録する(テスト用)", new_user_credit_path(current_user.id)
-%br
-= link_to "クレジット情報を編集する(テスト用)", edit_user_credit_path(current_user.id)
+/= current_user.nickname + "のマイページ編集画面です"
+/%br
+/= link_to "クレジット情報を新規登録する(テスト用)", new_user_credit_path(current_user.id)
+/%br
+/= link_to "クレジット情報を編集する(テスト用)", edit_user_credit_path(current_user.id)
 
-%br
--if @credit.nil?
-  = link_to "クレジット情報を新規登録する(本番用)", new_user_credit_path(current_user.id)
--else
-  = link_to "クレジット情報を編集する(本番用)", edit_user_credit_path(current_user.id)
+.mypage
+  .mypage__container
+    .mypage__container__top
+      = current_user.nickname + "のマイページ"
+      / クレジットカード情報がないとき
+    .mypage__container__bottom
+      .mypage__container__bottom__center
+        -if @credit.nil?
+          .mypage__container__bottom__center--submit
+            = link_to new_user_credit_path(current_user.id), class: "mypage__container__bottom__center--submit--a" do
+              = "クレジットカード登録"
+        -else
+          %table{border: "1"}
+            %tr
+              %th
+                カード名
+              %th
+                カード番号
+              %th
+                有効期限
+              %th
+                セキュリティコード
+            %tr
+              %td
+                MICHAEL HAYAKAWA
+              %td
+                1111 2222 3333 4444
+              %td
+                01/23
+              %td
+                1234
+          .mypage__container__bottom__center--submit
+            = link_to edit_user_credit_path(current_user.id), class: "mypage__container__bottom__center--submit--a" do
+              = "クレジットカード編集"
+
+
 / クレジット情報があれば、新規登録画面を表示しないようにする
+
 
 / クレジット情報があれば、その情報を表示した上で編集ページを作成する必要がある
 / クレジット情報があるかどうかをDBから取得しなければならないので難易度高め

@@ -3,8 +3,8 @@ class UsersController < ApplicationController
     # データベースにクレジットデータが存在する場合は@creditに該当データが入る
     # まだなければ@creditにnilが入る
     @credit = nil
-    if Credit.exists?(params[:user_id])
-      @credit = Credit.find(params[:user_id])
+    if Credit.exists?(params[:user])
+      @credit = Credit.find(params[:user])
     end
   end
 end
