@@ -24,11 +24,11 @@
             = f.label :expiration, class: "credit__container__bottom__center__card--label"
             %br/
             = f.date_select :expiration, class: "credit__container__bottom__center__card--input--tri", order:[:month,:year,:day],use_month_numbers: true, discard_day:true, start_year: (Time.now.year - 2000), end_year: (Time.now.year - 2000+10), prompt: "--"
-            .users__container__bottom__center__card--year
+            .credit__container__bottom__center__card--year
               年
-            .users__container__bottom__center__card--month
+            .credit__container__bottom__center__card--month
               月
-            .users__container__bottom__center__card--required
+            .credit__container__bottom__center__card--required
               必須
 
           .credit__container__bottom__center__card
