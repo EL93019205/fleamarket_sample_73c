@@ -5,9 +5,10 @@ class CreditsController < ApplicationController
   end
 
   def create
+    user = User.find(params[:user_id])
     @credit = Credit.new(credit_params)
     if @credit.save
-      redirect_to edit_user_path(@credit), notice: 'クレジットカード情報を登録しました'
+      redirect_to edit_user_path(user), notice: 'クレジットカード情報を登録しました'
     else
       render :new
     end
