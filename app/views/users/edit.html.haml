@@ -12,7 +12,7 @@
       / クレジットカード情報がないとき
     .mypage__container__bottom
       .mypage__container__bottom__center
-        -if @credit.nil?
+        -if @user.credit.nil?
           .mypage__container__bottom__center--submit
             = link_to new_user_credit_path(current_user.id), class: "mypage__container__bottom__center--submit--a" do
               = "クレジットカード登録"
