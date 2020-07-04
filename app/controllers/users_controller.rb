@@ -2,12 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user
   def edit
-    # データベースにクレジットデータが存在する場合は@creditに該当データが入る
-    # まだなければ@creditにnilが入る
-    @credit = nil
-    if Credit.exists?(params[:user])
-      @credit = Credit.find(params[:user])
-    end
+    @user = User.find(params[:id])
   end
 
 private
