@@ -1,7 +1,7 @@
 class Credit < ApplicationRecord
 
   #アソシエーション
-  has_one :user, dependent: :destroy
+  belongs_to :user, dependent: :destroy
 
   # 必須項目(空欄禁止)  
   validates :card_fullname, :card_number, :expiration,
