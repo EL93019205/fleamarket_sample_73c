@@ -18,13 +18,13 @@ class CreditsController < ApplicationController
 
   def edit
     @user = User.find(params[:user_id])
-    @credit = Credit.find(params[:user_id])
   end
 
   def update
-    @credit = Credit.find(params[:user_id])
+    @user = User.find(params[:user_id])
+    @credit = Credit.find(params[:id])
     if @credit.update(credit_params)
-      redirect_to edit_user_path(@credit), notice: 'クレジットカード情報を更新しました'
+      redirect_to edit_user_path(@user), notice: 'クレジットカード情報を更新しました'
     else
       render :edit, alert: "クレジットカード情報の更新に失敗しました"
     end
