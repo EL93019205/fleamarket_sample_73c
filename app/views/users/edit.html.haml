@@ -37,7 +37,7 @@
               %td
                 ●●●●
           .mypage__container__bottom__center--submit
-            = link_to edit_user_credit_path(current_user.id), class: "mypage__container__bottom__center--submit--a" do
+            = link_to edit_user_credit_path(current_user, current_user.credit), class: "mypage__container__bottom__center--submit--a" do
               = "クレジットカード編集"
 
 
