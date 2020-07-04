@@ -5,7 +5,7 @@
     .credit__container__bottom
       .credit__container__bottom__center
         = form_for [@user, @credit] do |f|
-
+          = render 'layouts/error_messages', model: f.object
           .credit__container__bottom__center__card
             = f.label :card_fullname, class: "credit__container__bottom__center__card--label"
             %br/
