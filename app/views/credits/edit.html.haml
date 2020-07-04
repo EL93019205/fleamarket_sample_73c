@@ -1,7 +1,7 @@
 .credit
   .credit__container
     .credit__container__top
-      = current_user.nickname + "のクレジット編集画面です"
+      クレジットカード編集
     .credit__container__bottom
       .credit__container__bottom__center
         = form_for [@user, @credit] do |f|
@@ -39,7 +39,7 @@
               必須
 
           .credit__container__bottom__center__card
-            = f.submit "登録", class: "credit__container__bottom__center__card--submit"
+            = f.submit "更新", class: "credit__container__bottom__center__card--submit"
 
         .credit__container__bottom__center__card--submit
           = link_to edit_user_path(current_user.id), class: "credit__container__bottom__center__card--submit--a" do
