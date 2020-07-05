@@ -1,24 +1,114 @@
-= form_for @item do |f|
-  = f.text_field :name,  autocomplete: "name", placeholder: "例)前田"
-  %br
-  = f.number_field :price,  autocomplete: "price", placeholder: "例)100"
-  %br
-  #image-box
-    #previews
-      - if @item.persisted?
-        - @item.images.each_with_index do |image, i|
-          = image_tag image.src.url, data: { index: i }, width: "100", height: "100"
-    = f.fields_for :images do |i|
-      .js-file_group{data:{index: "#{i.index}" }}
-        = i.file_field :src, class: "js-file"
-        .js-remove
-          削除
-      - if @item.persisted?
-        = i.check_box :_destroy, data:{ index: i.index }, class: "hidden-destroy"
+.items
+  .items__container
+    .items__container__top
+      商品出品ページ
+    .items__container__bottom
+      .items__container__bottom__center
+        = form_for @item do |f|
+          / 商品画像
+          .items__container__bottom__center__card
+            = f.label :itemimage, class: "items__container__bottom__center__card--label"
+            %br/
+            最大10枚までアップロードできます
+            .items__container__bottom__center__card--required
+              必須
+            #image-box
+              #previews
+                - if @item.persisted?
+                  - @item.images.each_with_index do |image, i|
+                    = image_tag image.src.url, data: { index: i }, width: "100", height: "100"
+              = f.fields_for :images do |i|
+                .js-file_group{data:{index: "#{i.index}" }}
+                  = i.file_field :src, class: "js-file"
+                  .js-remove
+                    削除
+                - if @item.persisted?
+                  = i.check_box :_destroy, data:{ index: i.index }, class: "hidden-destroy"
 
-    - if @item.persisted?
-      .js-file_group{data:{index: "#{@item.images.count}" }}
-        = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
-        .js-remove
-          削除
-  = f.submit
+              - if @item.persisted?
+                .js-file_group{data:{index: "#{@item.images.count}" }}
+                  = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
+                  .js-remove
+                    削除
+            %br
+          / 商品名
+          .items__container__bottom__center__card
+            = f.label :name, class: "items__container__bottom__center__card--label"
+            %br/
+            = f.text_field :name,  autocomplete: "name", placeholder: "商品名", class: "items__container__bottom__center__card--input"
+            .items__container__bottom__center__card--required
+              必須
+            %br
+          / 商品説明
+          .items__container__bottom__center__card
+            = f.label :introduction, class: "items__container__bottom__center__card--label"
+            %br/
+            = f.text_area :introduction,  autocomplete: "introduction", placeholder: "商品の説明(色、素材、重さ、注意点など)", class: "items__container__bottom__center__card--input"
+            .items__container__bottom__center__card--required
+              必須
+            %br
+          / カテゴリ
+          .items__container__bottom__center__card
+            .items__container__bottom__center__card__category#category_box
+              .pulldown#partent_box
+                =f.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}
+                = icon('fa', 'chevron-down')
+              .pulldown.item_input__body__category__children#children_box
+                /親カテゴリ選択によって子カテゴリの表示
+              .pulldown.item_input__body__category__grandchildren#grandchildren_box
+                /子カテゴリー選択によって孫カテゴリー表示
+            .items__container__bottom__center__card--required
+              必須
+          / ブランド
+          .items__container__bottom__center__card
+            = f.label :brand, class: "items__container__bottom__center__card--label"
+            %br/
+            = f.text_field :brand,  autocomplete: "brand", placeholder: "例)シャネル", class: "items__container__bottom__center__card--input"
+            .items__container__bottom__center__card--required
+              任意
+            %br
+          / 商品の状態
+          .items__container__bottom__center__card
+            = f.label :condition, class: "items__container__bottom__center__card--label"
+            %br/
+            = f.select :condition, Item.conditions.keys, {}, class: "items__container__bottom__center__card--input"
+            .items__container__bottom__center__card--required
+              必須
+          / 発送元の地域
+          .items__container__bottom__center__card
+            = f.label :shipping_area, class: "items__container__bottom__center__card--label"
+            %br/
+            = f.select :shipping_area, Item.shipping_areas.keys, {}, class: "items__container__bottom__center__card--input"
+            .items__container__bottom__center__card--required
+              必須
+          / 発送日数
+          .items__container__bottom__center__card
+            = f.label :shipping_days, class: "items__container__bottom__center__card--label"
+            %br/
+            = f.select :shipping_days, Item.shipping_days.keys, {}, class: "items__container__bottom__center__card--input"
+            .items__container__bottom__center__card--required
+              必須
+          / 発送料
+          .items__container__bottom__center__card
+            = f.label :shipping_price, class: "items__container__bottom__center__card--label"
+            %br/
+            = f.select :shipping_price, Item.shipping_prices.keys, {}, class: "items__container__bottom__center__card--input"
+            .items__container__bottom__center__card--required
+              必須
+          / 商品値段
+          .items__container__bottom__center__card
+            = f.label :price, class: "items__container__bottom__center__card--label"
+            .items__container__bottom__center__card--yen
+              ¥
+            = f.number_field :price,  autocomplete: "price", placeholder: "例)100", class: "items__container__bottom__center__card--input"
+            
+            .items__container__bottom__center__card--required
+              必須
+            %br
+            /送信ボタン
+            .items__container__bottom__center__card
+            = f.submit "登録", class: "items__container__bottom__center__card--submit"
+        /キャンセルボタン
+        .items__container__bottom__center__card--submit
+          = link_to root_path, class: "items__container__bottom__center__card--submit--a" do
+            ="キャンセル"
