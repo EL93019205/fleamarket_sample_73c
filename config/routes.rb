@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:edit] do
-    resources :credits, only: [:edit, :update]
+    resources :credits, only: [:new, :create, :edit, :update]
   end
   
   root 'items#index'

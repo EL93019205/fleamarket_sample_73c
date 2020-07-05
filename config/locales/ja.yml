@@ -7,6 +7,12 @@
           restrict_dependent_destroy:
             has_one: "%{record}が存在しているので削除できません"
             has_many: "%{record}が存在しているので削除できません"
+      attributes:
+        credit:
+          card_fullname: "名義"
+          card_number: "クレジット番号"
+          security_code: "セキュリティーコード"
+          expiration: "有効期限"
     date:
       abbr_day_names:
       - 日

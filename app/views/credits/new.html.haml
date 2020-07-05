@@ -1,7 +1,7 @@
 .credit
   .credit__container
     .credit__container__top
-      クレジットカード編集
+      クレジットカード登録
     .credit__container__bottom
       .credit__container__bottom__center
         = form_for [@user, @credit] do |f|
@@ -24,10 +24,10 @@
             = f.label :expiration, class: "credit__container__bottom__center__card--label"
             %br/
             = f.date_select :expiration, class: "credit__container__bottom__center__card--input--tri", order:[:month,:year,:day],use_month_numbers: true, discard_day:true, start_year: (Time.now.year - 2000), end_year: (Time.now.year - 2000+10), prompt: "--"
-            .credit__container__bottom__center__card--year
-              年
             .credit__container__bottom__center__card--month
               月
+            .credit__container__bottom__center__card--year
+              年
             .credit__container__bottom__center__card--required
               必須
 
@@ -39,7 +39,7 @@
               必須
 
           .credit__container__bottom__center__card
-            = f.submit "更新", class: "credit__container__bottom__center__card--submit"
+            = f.submit "登録", class: "credit__container__bottom__center__card--submit"
 
         .credit__container__bottom__center__card--submit
           = link_to edit_user_path(current_user.id), class: "credit__container__bottom__center__card--submit--a" do

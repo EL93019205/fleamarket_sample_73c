@@ -1,0 +1,8 @@
+- if model.errors.any?
+  %span{class: "error__article"}
+    下記入力に誤りがあります
+  %ul{class: "error__container__card",style:"margin-bottom: 30px;"}
+    - model.errors.full_messages.each do |message|
+      %li
+        ・
+        = message
