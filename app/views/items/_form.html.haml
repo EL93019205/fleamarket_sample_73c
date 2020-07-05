@@ -1,0 +1,24 @@
+= form_for @item do |f|
+  = f.text_field :name,  autocomplete: "name", placeholder: "例)前田"
+  %br
+  = f.number_field :price,  autocomplete: "price", placeholder: "例)100"
+  %br
+  #image-box
+    #previews
+      - if @item.persisted?
+        - @item.images.each_with_index do |image, i|
+          = image_tag image.src.url, data: { index: i }, width: "100", height: "100"
+    = f.fields_for :images do |i|
+      .js-file_group{data:{index: "#{i.index}" }}
+        = i.file_field :src, class: "js-file"
+        .js-remove
+          削除
+      - if @item.persisted?
+        = i.check_box :_destroy, data:{ index: i.index }, class: "hidden-destroy"
+
+    - if @item.persisted?
+      .js-file_group{data:{index: "#{@item.images.count}" }}
+        = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
+        .js-remove
+          削除
+  = f.submit

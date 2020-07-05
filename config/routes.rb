@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :credits, only: [:new, :create, :edit, :update]
   end
 
-  resources :items, only: [:index, :new, :create]
-  
   root 'items#index'
+  resources :items, except: :show
+  
 end
