@@ -68,7 +68,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |item|references|null:false, foreign_key:true|
-|image|string|null:false|
+|src|string|null:false|
 ### Association
 - belongs_to :item
 
