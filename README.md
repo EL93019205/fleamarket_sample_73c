@@ -16,7 +16,6 @@
 - has_many :purchases
 - has_many :images, dependent: :destroy
 - belongs_to :user, dependent: :destroy
-- belongs_to :brand
 - belongs_to :category
 
 ## usersテーブル
