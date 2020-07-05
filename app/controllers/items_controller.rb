@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy ]
   before_action :set_items, only: [:edit, :update, :destroy]
 
   def index
@@ -13,7 +14,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to root_path, notice: '商品を出品しました'
     else
       render :new
     end
@@ -25,7 +26,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to root_path
+      redirect_to root_path, notice: '商品情報を更新しました'
     else
       render :edit
     end
