@@ -77,6 +77,7 @@ end
 # フロント関連
 gem 'haml-rails'
 gem 'font-awesome-sass'
+gem 'jquery-rails'
 
 # 画像関連
 gem 'carrierwave'
@@ -87,3 +88,6 @@ gem 'fog-aws'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+
+# カテゴリ機能
+gem 'ancestry'
