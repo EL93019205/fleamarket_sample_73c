@@ -8,7 +8,6 @@
 |category|references|null: false, foreign_key: true|
 |user|references|null: false, foreign_key: true|
 |condition|integer|null: false|
-|trading_status|enum|null: false|
 |shipping_area|integer|null: false|
 |shipping_days|integer|null: false|
 |shipping_price|integer|null: false|
