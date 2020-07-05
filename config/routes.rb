@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :users, only: [:edit] do
     resources :credits, only: [:new, :create, :edit, :update]
   end
+
+  resources :items, only: [:index, :new, :create]
   
   root 'items#index'
 end
