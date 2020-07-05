@@ -4,7 +4,7 @@
 |name|string|null: false|
 |introduction|text|null: false|
 |price|integer|null: false|
-|brand|references|foreign_key:true|
+|brand|string||
 |category|references|null: false, foreign_key: true|
 |user|references|null: false, foreign_key: true|
 |condition|integer|null: false|
