@@ -76,15 +76,15 @@
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false,index: true|
-|path|string||
+|name|string|null:false|
+|ancestry|string|index: true|
 ### Association
 - has_many :items
 
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false,index: true|
-|path|string||
+|name|string|null:false|
+|ancestry|string|index: true|
 ### Association
 - has_many :items
