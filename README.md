@@ -77,7 +77,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null:false|
-|ancestry|string|index: true|
+|ancestry|string||
 ### Association
 - has_many :items
 
@@ -85,6 +85,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null:false|
-|ancestry|string|index: true|
+|ancestry|string||
 ### Association
 - has_many :items
