@@ -14,7 +14,7 @@ class CreditsController < ApplicationController
     if @credit.save
       redirect_to edit_user_path(@user), notice: 'クレジットカード情報を登録しました'
     else
-      render :new, alert: "クレジットカード情報の登録に失敗しました"
+      render :new
     end
   end
 
@@ -25,7 +25,7 @@ class CreditsController < ApplicationController
     if @credit.update(credit_params)
       redirect_to edit_user_path(@user), notice: 'クレジットカード情報を更新しました'
     else
-      render :edit, alert: "クレジットカード情報の更新に失敗しました"
+      render :edit
     end
   end
 
