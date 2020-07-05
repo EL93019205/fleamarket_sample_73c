@@ -2,14 +2,14 @@ class CreditsController < ApplicationController
   before_action :authenticate_user!
   before_action :dont_other_user_new, only: [:new, :create]
   before_action :dont_other_user_edit, only: [:edit, :update]
+  before_action :set_user, only: [:new, :create, :edit, :update]
+  before_action :set_credit, only: [:edit, :update]
 
   def new
-    @user = User.find(params[:user_id])
     @credit = Credit.new
   end
 
   def create
-    @user = User.find(params[:user_id])
     @credit = Credit.new(credit_params)
     if @credit.save
       redirect_to edit_user_path(@user), notice: 'クレジットカード情報を登録しました'
@@ -19,13 +19,9 @@ class CreditsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
-    @credit = Credit.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:user_id])
-    @credit = Credit.find(params[:id])
     if @credit.update(credit_params)
       redirect_to edit_user_path(@user), notice: 'クレジットカード情報を更新しました'
     else
@@ -66,6 +62,14 @@ class CreditsController < ApplicationController
         redirect_to root_path, alert: '既にクレジットカード登録済みです'
       end
     end
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
+  def set_credit
+    @credit = Credit.find(params[:id])
   end
 
 end
