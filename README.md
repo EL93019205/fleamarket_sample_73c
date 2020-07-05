@@ -73,14 +73,6 @@
 ### Association
 - belongs_to :item
 
-## brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null:false|
-|ancestry|string||
-### Association
-- has_many :items
-
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
