@@ -76,7 +76,7 @@
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false,unique:true,index: true|
+|name|string|null:false,index: true|
 |path|string||
 ### Association
 - has_many :items
@@ -84,7 +84,7 @@
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false,unique:true,index: true|
+|name|string|null:false,index: true|
 |path|string||
 ### Association
 - has_many :items
