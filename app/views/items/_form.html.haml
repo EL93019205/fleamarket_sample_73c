@@ -5,6 +5,7 @@
     .items__container__bottom
       .items__container__bottom__center
         = form_for @item do |f|
+          = render 'layouts/error_messages', model: f.object
           / 商品画像
           .items__container__bottom__center__card
             = f.label :itemimage, class: "items__container__bottom__center__card--label"
@@ -49,6 +50,7 @@
             %br
           / カテゴリ
           .items__container__bottom__center__card
+            = f.label :category, class: "items__container__bottom__center__card--label"
             .items__container__bottom__center__card__category#category_box
               .pulldown#partent_box
                 =f.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}
