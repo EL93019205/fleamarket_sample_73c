@@ -22,6 +22,8 @@ class Item < ApplicationRecord
     "傷や汚れあり":5,
     "全体的に状態が悪い":6,
   }, _prefix:true
+  validates :condition,
+  format: {with: /\A(?!選択してください)/ , message: "を選択してください"}
 
   # 配送状況
   enum trading_status: {
@@ -29,6 +31,8 @@ class Item < ApplicationRecord
     "出品中":1,
     "売却済み":2,
   }, _prefix:true
+  validates :trading_status,
+  format: {with: /\A(?!選択してください)/ , message: "を選択してください"}
 
   # 配送地域
   enum shipping_area: {
@@ -42,6 +46,8 @@ class Item < ApplicationRecord
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }, _prefix:true
+  validates :shipping_area,
+  format: {with: /\A(?!選択してください)/ , message: "を選択してください"}
 
   # 配送状況
   enum shipping_days: {
@@ -50,6 +56,8 @@ class Item < ApplicationRecord
     "2〜3日で発送":2,
     "4〜7日で発送":3,
   }, _prefix:true
+  validates :shipping_days,
+  format: {with: /\A(?!選択してください)/ , message: "を選択してください"}
 
   # 配送料
   enum shipping_price: {
@@ -57,4 +65,6 @@ class Item < ApplicationRecord
     "送料込み(出品者負担)":1,
     "着払い(購入者負担)":2,
   }, _prefix:true
+  validates :shipping_price,
+  format: {with: /\A(?!選択してください)/ , message: "を選択してください"}
 end
