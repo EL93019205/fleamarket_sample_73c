@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy ]
   before_action :set_items, only: [:edit, :update, :destroy]
   before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.includes(:images).order('created_at DESC')
@@ -26,7 +25,7 @@ class ItemsController < ApplicationController
   def edit
     #カテゴリーデータ取得
     @grandchild_category = @item.category
-    @child_category = @grandchild_category.parent 
+    @child_category = @grandchild_category.parent
     @category_parent = @child_category.parent
 
     #カテゴリー一覧を作成
@@ -72,9 +71,4 @@ class ItemsController < ApplicationController
     @category_parent_array = Category.where(ancestry: nil)
   end
 
-  def item_params
-    params.require(:item).permit(
-      :category_id,
-    )
-  end
 end
