@@ -17,6 +17,8 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path, notice: '商品を出品しました'
     else
+      # 再度画像選択できるようにする
+      @item.images = []
       @item.images.new
       render :new
     end
