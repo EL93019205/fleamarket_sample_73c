@@ -14,6 +14,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.user_id = current_user.id
+    @item.trading_status = 1
     if @item.save
       redirect_to root_path, notice: '商品を出品しました'
     else
