@@ -5,7 +5,7 @@ class Item < ApplicationRecord
     :category, :user, :condition, :trading_status,
     :shipping_area, :shipping_days, :shipping_price, presence: true
   validates_associated :images
-  validates :images, presence: true
+  validates :images, presence: {message: "を最低1枚選択してください"}
 
   # association
 #  has_many :purchases
