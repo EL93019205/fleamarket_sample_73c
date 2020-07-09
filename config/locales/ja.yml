@@ -24,6 +24,7 @@
           shipping_days: "発送までの日数"
           shipping_price: "発送料の負担"
           price: "販売価格"
+          images: "画像"
     date:
       abbr_day_names:
       - 日
