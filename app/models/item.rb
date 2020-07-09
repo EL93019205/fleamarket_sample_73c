@@ -4,6 +4,8 @@ class Item < ApplicationRecord
   validates :name, :introduction, :price, 
     :category, :user, :condition, :trading_status,
     :shipping_area, :shipping_days, :shipping_price, presence: true
+  validates_associated :images
+  validates :images, presence: true
 
   # association
 #  has_many :purchases
