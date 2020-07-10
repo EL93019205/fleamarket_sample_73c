@@ -11,8 +11,7 @@ function appendChildrenBox(insertHTML) {
   childSelectHtml = 
     `<select class="item_input__body__category__children--select" id="children_category">
        <option value="" data-category="" >選択してください</option>
-       ${insertHTML}</select>
-     <i class = "fa fa-chevron-down"></i>`;
+       ${insertHTML}</select>`;
   $('#children_box').append(childSelectHtml);
 }
 
@@ -22,8 +21,7 @@ function appendGrandchildrenBox(insertHTML) {
   grandchildSelectHtml = 
     `<select class="item_input__body__category__grandchildren--select" id="grandchildren_category" name="item[category_id]">
        <option value="" data-category="" >選択してください</option>
-       ${insertHTML}</select>
-     <i class = "fa fa-chevron-down"></i>`;
+       ${insertHTML}</select>`;
   $('#grandchildren_box').append(grandchildSelectHtml);
 }
 
