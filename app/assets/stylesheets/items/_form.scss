@@ -35,6 +35,46 @@
           background-color: white;
           margin: 32px 0px 0px;
           position:relative;
+          &--inputtext {
+            width: 340px;
+            height: 160px;
+            padding: 10px 16px 8px;
+            margin: 8px 0px 0px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            line-height: 1.5;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            color: #333;
+          }
+          &--yen {
+            position: absolute;
+            left: 3px;
+            top: 43px;
+            width: 20px;
+            height: 50px;
+            font-size: 14px;
+            font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+            padding: 0;
+          }
+          &--inputyen {
+            width: 320px;
+            height: 48px;
+            padding: 10px 16px 8px;
+            margin: 8px 0px 0px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            line-height: 1.5;
+            font-size: 16px;
+            justify-content: space-between;
+            color: #333;
+            display: flex;
+            float: right;
+          }
           &--label{
             width: 83.45px;
             height: 14px;
@@ -42,6 +82,15 @@
             font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
             font-weight: bold;
             color: #333;
+            &--yen {
+              width: 83.45px;
+              height: 14px;
+              font-size: 14px;
+              font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+              font-weight: bold;
+              color: #333;
+              padding-right: 180px;
+            }
           }
           &--input{
             width: 340px;
@@ -75,27 +124,6 @@
                 font-size: 16px;
               }
             }
-          }
-          &--year{
-            position:absolute;
-            bottom: 4px;
-            left: 80px;
-            font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-            color: #333;
-          }
-          &--month{
-            position:absolute;
-            bottom: 4px;
-            left: 180px;
-            font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-            color: #333;
-          }
-          &--day{
-            position:absolute;
-            bottom: 4px;
-            left: 280px;
-            font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-            color: #333;
           }
           &--required{
             position: absolute;
@@ -175,19 +203,82 @@
   }
 }
 
-#user_birthday_1i, #user_birthday_2i, #user_birthday_3i, {
-  width: 76px;
+.field_with_errors {
+  display: inline-block;
+}
+
+.js-remove {
+  position: absolute;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  color: white;
+  background-color: #888;
+  padding: 5px 5px;
+  font-size: 16px;
+  border-radius: 3px;
+  line-height: 19px;
+  margin: 3px 0 0;
+  cursor: pointer;
+  
+}
+
+.parent_category_box {
+  width: 340px;
   height: 48px;
-  padding: 0 10px;
-  margin-top: 8px;
-  margin-right:20px;
+  padding: 10px 16px 8px;
+  margin: 8px 0px 0px;
   border-radius: 4px;
   border: 1px solid #ccc;
   line-height: 1.5;
   font-size: 16px;
+  display: flex;
+  justify-content: space-between;
   color: #333;
 }
 
-.field_with_errors {
-  display: inline-block;
+.item_input__body__category__children {
+  &--select {
+    width: 340px;
+    height: 48px;
+    padding: 10px 16px 8px;
+    margin: 8px 0px 0px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    line-height: 1.5;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+  }
+}
+
+.item_input__body__category__grandchildren {
+  &--select {
+    width: 340px;
+    height: 48px;
+    padding: 10px 16px 8px;
+    margin: 8px 0px 0px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    line-height: 1.5;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+  }
+}
+
+.pulldown.item_input__body__category__children {
+  &--select {
+    width: 340px;
+    height: 48px;
+    padding: 10px 16px 8px;
+    margin: 8px 0px 0px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    line-height: 1.5;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+  }
 }

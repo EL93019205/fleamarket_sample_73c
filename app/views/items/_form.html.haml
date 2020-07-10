@@ -44,7 +44,7 @@
           .items__container__bottom__center__card
             = f.label :introduction, class: "items__container__bottom__center__card--label"
             %br/
-            = f.text_area :introduction,  autocomplete: "introduction", placeholder: "商品の説明(色、素材、重さ、注意点など)", class: "items__container__bottom__center__card--input"
+            = f.text_area :introduction,  autocomplete: "introduction", placeholder: "商品の説明(色、素材、重さ、注意点など)", class: "items__container__bottom__center__card--inputtext"
             .items__container__bottom__center__card--required
               必須
             %br
@@ -54,7 +54,6 @@
             .items__container__bottom__center__card__category#category_box
               .pulldown#partent_box
                 =f.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}
-                = icon('fa', 'chevron-down')
               .pulldown.item_input__body__category__children#children_box
                 /親カテゴリ選択によって子カテゴリの表示
               .pulldown.item_input__body__category__grandchildren#grandchildren_box
@@ -66,7 +65,7 @@
             = f.label :brand, class: "items__container__bottom__center__card--label"
             %br/
             = f.text_field :brand,  autocomplete: "brand", placeholder: "例)シャネル", class: "items__container__bottom__center__card--input"
-            .items__container__bottom__center__card--required
+            .items__container__bottom__center__card--any
               任意
             %br
           / 商品の状態
@@ -99,11 +98,10 @@
               必須
           / 商品値段
           .items__container__bottom__center__card
-            = f.label :price, class: "items__container__bottom__center__card--label"
+            = f.label :price, class: "items__container__bottom__center__card--label--yen"
+            = f.number_field :price,  autocomplete: "price", placeholder: "例)100", class: "items__container__bottom__center__card--inputyen"
             .items__container__bottom__center__card--yen
               ¥
-            = f.number_field :price,  autocomplete: "price", placeholder: "例)100", class: "items__container__bottom__center__card--input"
-            
             .items__container__bottom__center__card--required
               必須
             %br
