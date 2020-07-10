@@ -208,7 +208,8 @@
 }
 
 .js-remove {
-  position: absolute;
+  width: 45px;
+  height: 25px;
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
   color: white;
   background-color: #888;
@@ -216,9 +217,8 @@
   font-size: 16px;
   border-radius: 3px;
   line-height: 19px;
-  margin: 3px 0 0;
+  margin: 3px 0 3px;
   cursor: pointer;
-  
 }
 
 .parent_category_box {
