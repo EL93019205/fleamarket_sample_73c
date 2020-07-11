@@ -7,6 +7,9 @@ class Item < ApplicationRecord
   validates_associated :images
   validates :images, presence: {message: "を最低1枚選択してください"}
 
+  validate :price_validate
+  validates_numericality_of :price, message: "は半角数字を入力してください"
+
   # association
 #  has_many :purchases
   has_many :images, dependent: :destroy
@@ -69,4 +72,10 @@ class Item < ApplicationRecord
   }, _prefix:true
   validates :shipping_price,
   format: {with: /\A(?!選択してください)/ , message: "を選択してください"}
+
+  protected
+  def price_validate
+    errors.add(:price, "は0より大きくなければなりません") unless price.nil? || price > 0.0
+  end
+
 end
