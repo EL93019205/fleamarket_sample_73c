@@ -13,6 +13,18 @@
           card_number: "クレジット番号"
           security_code: "セキュリティーコード"
           expiration: "有効期限"
+        item:
+          itemimage: "商品画像"
+          name: "商品名"
+          introduction: "商品説明"
+          category: "カテゴリー"
+          brand: "ブランド"
+          condition: "商品の状態"
+          shipping_area: "発送元の地域"
+          shipping_days: "発送までの日数"
+          shipping_price: "発送料の負担"
+          price: "販売価格"
+          images: "画像"
     date:
       abbr_day_names:
       - 日

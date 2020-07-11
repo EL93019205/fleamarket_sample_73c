@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_04_041317) do
+ActiveRecord::Schema.define(version: 2020_07_05_093651) do
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.string "name", null: false
+  end
 
   create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "card_fullname", null: false
@@ -25,9 +32,9 @@ ActiveRecord::Schema.define(version: 2020_07_04_041317) do
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
-    t.string "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "src", null: false
     t.index ["item_id"], name: "index_images_on_item_id"
   end
 
@@ -36,6 +43,17 @@ ActiveRecord::Schema.define(version: 2020_07_04_041317) do
     t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "introduction", null: false
+    t.bigint "user_id", null: false
+    t.integer "condition", null: false
+    t.integer "trading_status", null: false
+    t.integer "shipping_area", null: false
+    t.integer "shipping_days", null: false
+    t.integer "shipping_price", null: false
+    t.bigint "category_id", null: false
+    t.string "brand"
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -68,4 +86,6 @@ ActiveRecord::Schema.define(version: 2020_07_04_041317) do
 
   add_foreign_key "credits", "users"
   add_foreign_key "images", "items"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "users"
 end

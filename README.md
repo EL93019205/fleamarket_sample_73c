@@ -4,19 +4,18 @@
 |name|string|null: false|
 |introduction|text|null: false|
 |price|integer|null: false|
-|brand|references|foreign_key:true|
+|brand|string||
 |category|references|null: false, foreign_key: true|
 |user|references|null: false, foreign_key: true|
 |condition|integer|null: false|
-|trading_status|enum|null: false|
+|trading_status|integer|null: false|
 |shipping_area|integer|null: false|
 |shipping_days|integer|null: false|
 |shipping_price|integer|null: false|
 ### Association
 - has_many :purchases
 - has_many :images, dependent: :destroy
-- belongs_to :user
-- belongs_to :brand
+- belongs_to :user, dependent: :destroy
 - belongs_to :category
 
 ## usersテーブル
@@ -69,22 +68,14 @@
 |Column|Type|Options|
 |------|----|-------|
 |item|references|null:false, foreign_key:true|
-|image|string|null:false|
+|src|string|null:false|
 ### Association
 - belongs_to :item
-
-## brandsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null:false,unique:true,index: true|
-|path|string|null:false,unique:true|
-### Association
-- has_many :items
 
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false,unique:true,index: true|
-|path|string|null:false,unique:true|
+|name|string|null:false|
+|ancestry|string||
 ### Association
 - has_many :items

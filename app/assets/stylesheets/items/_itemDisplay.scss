@@ -1,0 +1,47 @@
+.main{
+  &__itemDisplay{
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 1000;
+    &__box{
+      width: 120px;
+      height: 116px;
+      background-color: #3CCACE;
+      padding: 15px;
+      position: relative;
+      margin: 0;
+      border-radius: 4%;
+      transition: 1.0s ;
+      &:hover {
+        opacity: 0.8;
+      }
+      &--link{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      &__text{
+        color: white;
+        width: 90px;
+        height: 27px;
+        margin-bottom: 5px;
+        font-size: 18px;
+        font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+        margin: 0 auto 5px auto;
+        text-align: center;
+      }
+      &__icon{
+        width: 54px;
+        height: 54px;
+        margin: 0 auto;
+        &--image{
+          width: 54px;
+          height: 54px;
+        }
+      }
+    }
+  }
+}
