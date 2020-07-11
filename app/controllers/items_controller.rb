@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to root_path
+    redirect_to root_path, notice: '商品情報を削除しました'
   end
 
   def get_category_children
