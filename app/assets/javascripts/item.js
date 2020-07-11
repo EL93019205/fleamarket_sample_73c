@@ -9,7 +9,7 @@ function appendOption(category) {
 function appendChildrenBox(insertHTML) {
   let childSelectHtml = '';
   childSelectHtml = 
-    `<select class="item_input__body__category__children--select" id="children_category">
+    `<select class="item_input__body__category__children--select" id="children_category" name="item[category_id]">
        <option value="" data-category="" >選択してください</option>
        ${insertHTML}</select>`;
   $('#children_box').append(childSelectHtml);
