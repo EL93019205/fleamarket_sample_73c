@@ -52,12 +52,26 @@
           .items__container__bottom__center__card
             = f.label :category, class: "items__container__bottom__center__card--label"
             .items__container__bottom__center__card__category#category_box
-              .pulldown#partent_box
-                =f.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}
-              .pulldown.item_input__body__category__children#children_box
-                /親カテゴリ選択によって子カテゴリの表示
-              .pulldown.item_input__body__category__grandchildren#grandchildren_box
-                /子カテゴリー選択によって孫カテゴリー表示
+              - if @item.persisted?
+                / editアクションで呼び出すカテゴリ選択
+                / 親カテゴリ(初期値も設定)
+                .pulldown#partent_box
+                  =f.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}, selected: @parent.id),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}
+                / 子カテゴリ(初期値およびカスタム属性data-categoryも設定)
+                .pulldown.item_input__body__category__children#children_box
+                  =f.select :category_id, options_for_select( @category_children_array.map{|c| [c[:name], c[:id], {data: {category: c[:id] } }] }, selected: @child.id),{include_blank: "選択してください"}, { class: "item_input__body__category__children--select", id: "children_category"}
+                / 孫カテゴリ(初期値およびカスタム属性data-categoryも設定)
+                .pulldown.item_input__body__category__grandchildren#grandchildren_box
+                  =f.select :category_id, options_for_select( @category_grandchildren_array.map{|c| [c[:name], c[:id], {data: {category: c[:id] } }]}, selected: @grandchild.id),{include_blank: "選択してください"}, { class: "item_input__body__category__grandchildren--select", id: "grandchildren_category"}
+              - else
+                / newアクションで呼び出すカテゴリ選択
+                / 親カテゴリ
+                .pulldown#partent_box
+                  =f.select :category_id, options_for_select( @category_parent_array.map{|c| [c[:name], c[:id]]}),{include_blank: "選択してください"}, { class: "parent_category_box", id: "parent_category"}
+                  / item.jsで子カテゴリを表示
+                .pulldown.item_input__body__category__children#children_box
+                  / item.jsで孫カテゴリを表示
+                .pulldown.item_input__body__category__grandchildren#grandchildren_box
             .items__container__bottom__center__card--required
               必須
           / ブランド

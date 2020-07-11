@@ -1,8 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy ]
   before_action :set_items, only: [:edit, :update, :destroy]
-  before_action :set_category, only: [:new, :edit, :create, :update, :destroy]
-
+  before_action :set_category, only: [:new, :create, :edit, :update]
+  before_action :set_category_child, only: [:edit, :update]
+  before_action :set_category_grandchild, only: [:edit, :update]
+  before_action :set_category_id, only: [:edit, :update]
   def index
     @items = Item.includes(:images).order('created_at DESC')
   end
@@ -25,17 +27,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    #カテゴリーデータ取得
-    @grandchild_category = @item.category
-    @child_category = @grandchild_category.parent
-    @category_parent = @child_category.parent
-
-    #カテゴリー一覧を作成
-    @category = Category.find(params[:id])
-    # 紐づく孫カテゴリーの親（子カテゴリー）の一覧を配列で取得
-    @category_children = @item.category.parent.parent.children
-    # 紐づく孫カテゴリーの一覧を配列で取得
-    @category_grandchildren = @item.category.parent.children
   end
 
   def update
@@ -61,6 +52,7 @@ class ItemsController < ApplicationController
 
   private
 
+  # ストロングパラメータ
   def item_params
     params.require(:item).permit(:name, :price,
       :introduction, :user_id, :condition, :trading_status, 
@@ -68,12 +60,31 @@ class ItemsController < ApplicationController
       .merge(user_id: current_user.id, trading_status: 1)
   end
 
+  # itemをDBから取得
   def set_items
     @item = Item.find(params[:id])
   end
 
-  def set_category  
+  # 親カテゴリの一覧作成
+  def set_category
     @category_parent_array = Category.where(ancestry: nil)
+  end
+
+  # 子カテゴリの一覧作成(edit,update用)
+  def set_category_child
+    @category_children_array = @item.category.parent.parent.children
+  end
+
+  # 孫カテゴリの一覧作成(edit,update用)
+  def set_category_grandchild
+    @category_grandchildren_array = @item.category.parent.children
+  end
+
+  #カテゴリーデータ取得(edit,update用)
+  def set_category_id
+    @grandchild = @item.category
+    @child = @grandchild.parent
+    @parent = @child.parent
   end
 
 end
