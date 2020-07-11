@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy ]
-  before_action :set_items, only: [:edit, :update, :destroy]
+  before_action :set_items, only: [:edit, :update, :destroy, :show]
   before_action :set_category, only: [:new, :create, :edit, :update]
   before_action :set_category_child, only: [:edit, :update]
   before_action :set_category_grandchild, only: [:edit, :update]
-  before_action :set_category_id, only: [:edit, :update]
+  before_action :set_category_id, only: [:edit, :update, :show]
   def index
     @items = Item.includes(:images).order('created_at DESC')
   end
@@ -40,6 +40,9 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to root_path, notice: '商品情報を削除しました'
+  end
+
+  def show
   end
 
   def get_category_children
