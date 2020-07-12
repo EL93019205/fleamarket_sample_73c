@@ -1,45 +1,26 @@
-%section.pickupBrand
-  %h2.head ピックアップブランド
-  .productBox
-    .productBox__Head
-      %a{:href => "#"}
-        %h3.title アーカイバ
-    .productBox__Lists
-      .productList
-        =render @items
-      .productList
-        %a{:href => "/products/3"}
-          %figure.productList--img
-            = image_tag asset_path('sample2.png')
-          .productList--body
-            %h3.name product3
-            .details
-              %ul
-                %li 30000円
-                %li
-                  %i.fa.fa-star.likeIcon 0
-              %p (税込)
-      .productList
-        %a{:href => "/products/2"}
-          %figure.productList--img
-            = image_tag asset_path('sample3.png')
-          .productList--body
-            %h3.name product2
-            .details
-              %ul
-                %li 20000円
-                %li
-                  %i.fa.fa-star.likeIcon 0
-              %p (税込)
-      .productList
-        %a{:href => "/products/1"}
-          %figure.productList--img
-            = image_tag asset_path('sample4.png')
-          .productList--body
-            %h3.name product1
-            .details
-              %ul
-                %li 10000円
-                %li
-                  %i.fa.fa-star.likeIcon 1
-              %p (税込)
+.pickupBrand
+  .pickupBrand__title
+    ピックアップブランド
+  .pickupBrand__new-items
+    = link_to "アーカイバ", "#", class:"pickupBrand__new-items--link"
+  %ul.pickupBrand__products
+    - @items_brand.each_with_index do |item, n|
+      .pickupBrand__products__item
+        .product-overview
+          .product-overview__image
+            = link_to item_path(item.id) do
+              = image_tag item.images[0].src.url, size:'190x150'
+          .product-overview__name
+            = item.name
+          .product-overview__info
+            .product-overview__info__price
+              = number_to_currency(item.price)
+              .product-overview__info__price__tax
+                (税込)
+              .product-overview__info__status
+                -# - if item.purchase
+                -#   SOLD OUT
+                -# - else
+                -#   出品中
+                SOLD OUT
+                出品中
