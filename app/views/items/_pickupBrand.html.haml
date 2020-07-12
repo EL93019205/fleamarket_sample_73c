@@ -19,11 +19,9 @@
             .pickupBrand__products__item__info__price__tax
               (税込)
             .pickupBrand__products__item__info__price__sale
-              -# - if item.purchase
-              -#   SOLD OUT
-              -# - else
-              -#   出品中
-              .pickupBrand__products__item__info__price__sale__red
-                SOLD OUT
-              .pickupBrand__products__item__info__price__sale__blue
-                出品中
+              - if item.trading_status == "出品中"
+                .pickupBrand__products__item__info__price__sale__blue
+                  出品中
+              - else
+                .pickupBrand__products__item__info__price__sale__red
+                  SOLDOUT
