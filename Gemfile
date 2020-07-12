@@ -91,3 +91,5 @@ gem 'devise-i18n-views'
 
 # カテゴリ機能
 gem 'ancestry'
+
+gem 'payjp'
