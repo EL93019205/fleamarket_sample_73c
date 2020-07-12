@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
+    resources :purchases, only: [:new, :create]
   end
   get 'get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
   get 'get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }

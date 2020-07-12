@@ -76,9 +76,8 @@
           = link_to item_path(@item), method: :delete, class: "show__container__middle__edit--destroy" do
             ="出品をキャンセル"
       - else
-        = link_to "#", class: "show__container__middle__buy" do
+        = link_to new_item_purchase_path(@item), class: "show__container__middle__buy" do
           ="購入画面に進む"
-
 
     .show__container__bottom
       .show__container__bottom__introduction
