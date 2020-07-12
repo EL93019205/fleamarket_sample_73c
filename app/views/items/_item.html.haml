@@ -2,7 +2,8 @@
   = item.name
   %br
   = item.price
-  %br
+  %br 
+  .content__yen 円 (税込)
   - item.images.each do |image|
     = image_tag image.src.url
   = link_to "詳細", item_path(item)
