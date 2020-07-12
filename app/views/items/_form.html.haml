@@ -124,5 +124,9 @@
             = f.submit "登録", class: "items__container__bottom__center__card--submit"
         /キャンセルボタン
         .items__container__bottom__center__card--submit
-          = link_to root_path, class: "items__container__bottom__center__card--submit--a" do
-            ="キャンセル"
+          - if @item.persisted?
+            = link_to item_path(@item), class: "items__container__bottom__center__card--submit--a" do
+              ="キャンセル"
+          - else
+            = link_to root_path, class: "items__container__bottom__center__card--submit--a" do
+              ="キャンセル"

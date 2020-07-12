@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path, notice: '商品を出品しました'
+      redirect_to item_path(@item), notice: '商品を出品しました'
     else
       # 再度画像選択できるようにする
       @item.images = []
@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to root_path, notice: '商品情報を更新しました'
+      redirect_to item_path(@item), notice: '出品情報を更新しました'
     else
       render :edit
     end
@@ -40,10 +40,11 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to root_path, notice: '商品情報を削除しました'
+    redirect_to root_path, notice: '出品をキャンセルしました'
   end
 
   def show
+    @user = User.find(@item.user_id)
   end
 
   def get_category_children

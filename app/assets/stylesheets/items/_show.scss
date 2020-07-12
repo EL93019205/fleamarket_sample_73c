@@ -1,0 +1,185 @@
+.show{
+  width: 100%;
+  background-color: #F5F5F5;
+  padding: 64px 0;
+  &__container{
+    width: 700px;
+    margin: 0 auto;
+    &__top{
+      background-color: white;
+      padding: 32px 0;
+      text-align: center;
+      font-size: 22px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      font-weight: bold;
+      color: #333;
+      border-radius: 10px 10px 0px 0px / 10px 10px 0px 0px;
+    }
+    &__middle{
+      border-top: 1px solid #f5f5f5;
+      width: 700px;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 16px 40px;
+      background-color: white;
+      &__images{
+        width: 300px;
+        height: 420px;
+        margin-right: 20px;
+        margin: 0 20px 0 0px;
+        &__top{
+          width: 292px;
+          height: 292px;
+          margin: 4px;
+          background-color: #F5F5F5;
+          border-radius: 4px;
+        }
+        &__sub{
+          width: 300px;
+          height: 120px;
+          display: flex;
+          flex-wrap: wrap;
+          &--child{
+            border-radius: 4px;
+            width: 52px;
+            height: 52px;
+            margin: 4px;
+            background-color: #F5F5F5;
+          }
+        }
+      }
+      &__table{
+        width: 300px;
+        height: 420px;
+        table{
+          width: 100%;
+          height: 100%;
+          tbody{
+            th{
+              width: 39%;
+              border: 1px solid #f5f5f5;
+              background-color: #fafafa;
+              color: #333;
+              font-size: 14px;
+              padding: 8px;
+              font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+            }
+            td{
+              width: 61%;
+              border: 1px solid #f5f5f5;
+              background-color: #fff;
+              color: #333;
+              font-size: 14px;
+              padding: 8px;
+              font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+            }
+          }
+        }
+      }
+      &__prices{
+        width: 700px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        margin: 24px auto 0 auto;
+        &--1{
+          font-size: 50px;
+          color: #333;
+          margin-right: 16px;
+          line-height: 50px;
+          font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+          font-weight: bold;
+        }
+        &--2{
+          font-size: 10px;
+          color: #333;
+          line-height: 70px ;
+          margin-right: 4px;
+          font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+        }
+        &--3{
+          font-size: 16px;
+          color: #333;
+          line-height: 72px;
+          font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+        }
+      }
+      &__buy{
+        margin-top: 16px;
+        width: 700px;
+        height: 60px;
+        background-color: #3CCACE;
+        color: #fff;
+        line-height: 60px;
+        font-size: 24px;
+        font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        transition: 0.3s ;
+        &:hover {
+          box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+          transform: translateY(-10px);
+          transition-duration: 0.5s;
+        }
+      }
+      &__edit{
+        margin-top: 16px;
+        width: 700px;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        &--edit{
+          width: 300px;
+          height: 60px;
+          background-color: #3CCACE;
+          font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+          font-weight: bold;
+          text-align: center;
+          text-decoration: none;
+          color: #fff;
+          margin-right: 20px;
+          line-height: 60px;
+          font-size: 24px;
+          transition: 0.3s ;
+          &:hover {
+            box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+            transform: translateY(-10px);
+            transition-duration: 0.5s;
+          }
+        }
+        &--destroy{
+          width: 300px;
+          height: 60px;
+          border: 2px solid #3CCACE;
+          background-color: #fff;
+          font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+          font-weight: bold;
+          text-align: center;
+          text-decoration: none;
+          color: #3CCACE;
+          line-height: 60px;
+          font-size: 24px;
+          transition: 0.3s ;
+          &:hover {
+            box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+            transform: translateY(-10px);
+            transition-duration: 0.5s;
+          }
+        }
+      }
+    }
+    &__bottom{
+      background-color: #fff;
+      padding: 16px 40px;
+      border-radius: 0px 0px 10px 10px / 0px 0px 10px 10px;
+      &__introduction{
+        color: #333;
+        font-size: 18px;
+        font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+        word-wrap: break-word;
+        white-space:pre-wrap;
+      }
+    }
+  }
+}
