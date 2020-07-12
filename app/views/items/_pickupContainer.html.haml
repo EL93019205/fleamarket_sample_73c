@@ -10,7 +10,9 @@
           = link_to item_path(item.id) do
             = image_tag item.images[0].src.url, size:'220x150'
         .pickupContainer__products__item__name
-          = item.name
+          = item.name[0,10]
+          - if item.name.size > 9
+            = "..."
         .pickupContainer__products__item__info
           .pickupContainer__products__item__info__price
             = number_to_currency(item.price)
