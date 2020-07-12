@@ -7,7 +7,7 @@
     - @items_brand.each_with_index do |item, n|
       .pickupBrand__products__item
         .pickupBrand__products__item__image
-          = link_to item_path(item.id) do
+          = link_to item_path(item) do
             = image_tag item.images[0].src.url, size:'220x150'
         .pickupBrand__products__item__name
           = item.name[0,10]
