@@ -1,12 +1,13 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy ]
-  before_action :set_items, only: [:edit, :update, :destroy]
+  before_action :set_items, only: [:edit, :update, :destroy, :show]
   before_action :set_category, only: [:new, :create, :edit, :update]
   before_action :set_category_child, only: [:edit, :update]
   before_action :set_category_grandchild, only: [:edit, :update]
-  before_action :set_category_id, only: [:edit, :update]
+  before_action :set_category_id, only: [:edit, :update, :show]
   def index
-    @items = Item.includes(:images).order('created_at DESC')
+    @items_category = Item.includes(:images).order('created_at DESC').limit(4)
+    @items_brand = Item.includes(:images).order('created_at DESC').limit(4).where.not(brand: "")
   end
 
   def new
@@ -17,7 +18,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path, notice: '商品を出品しました'
+      redirect_to item_path(@item), notice: '商品を出品しました'
     else
       # 再度画像選択できるようにする
       @item.images = []
@@ -31,7 +32,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to root_path, notice: '商品情報を更新しました'
+      redirect_to item_path(@item), notice: '出品情報を更新しました'
     else
       render :edit
     end
@@ -39,7 +40,11 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to root_path, notice: '商品情報を削除しました'
+    redirect_to root_path, notice: '出品をキャンセルしました'
+  end
+
+  def show
+    @user = User.find(@item.user_id)
   end
 
   def get_category_children

@@ -2,10 +2,11 @@
   = item.name
   %br
   = item.price
-  %br
+  %br 
+  .content__yen 円 (税込)
   - item.images.each do |image|
     = image_tag image.src.url
-  = link_to "詳細", "#"
+  = link_to "詳細", item_path(item)
   - if user_signed_in?
     - if item.user_id == current_user.id
       = link_to "編集", edit_item_path(item)

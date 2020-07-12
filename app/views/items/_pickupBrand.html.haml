@@ -1,0 +1,27 @@
+.pickupBrand
+  .pickupBrand__title
+    ピックアップブランド
+  .pickupBrand__new-items
+    = link_to "アーカイバ", "#", class:"pickupBrand__new-items--link"
+  %ul.pickupBrand__products
+    - @items_brand.each_with_index do |item, n|
+      .pickupBrand__products__item
+        .pickupBrand__products__item__image
+          = link_to item_path(item) do
+            = image_tag item.images[0].src.url, size:'220x150'
+        .pickupBrand__products__item__name
+          = item.name[0,10]
+          - if item.name.size > 9
+            = "..."
+        .pickupBrand__products__item__info
+          .pickupBrand__products__item__info__price
+            = number_to_currency(item.price)
+            .pickupBrand__products__item__info__price__tax
+              (税込)
+            .pickupBrand__products__item__info__price__sale
+              - if item.trading_status == "出品中"
+                .pickupBrand__products__item__info__price__sale__blue
+                  出品中
+              - else
+                .pickupBrand__products__item__info__price__sale__red
+                  SOLDOUT

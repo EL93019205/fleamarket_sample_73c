@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
-  resources :items, except: [:show] do
+  resources :items do
     # Ajaxで動くアクションのルート
     collection do
       get 'get_category_children', defaults: { format: 'json' }

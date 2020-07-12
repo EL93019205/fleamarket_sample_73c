@@ -1,55 +1,28 @@
-%section.pickupContainer
-  %h2.head ピックアップカテゴリー
-  .productBox
-    .productBox__Head
-      %a{:href => "#"}
-        %h3.title 新規投稿商品
-    .productBox__Lists
-      .productList
-        %a{:href => "/products/8"}
-          %figure.productList--img
-            = image_tag asset_path('sample1.jpeg')
-          .productList--body
-            %h3.name ee
-            .details
-              %ul
-                %li 1000円
-                %li
-                  %i.fa.fa-star.likeIcon 0
-              %p (税込)
-      .productList
-        %a{:href => "/products/3"}
-          %figure.productList--img
-            = image_tag asset_path('sample2.png')
-          .productList--body
-            %h3.name product3
-            .details
-              %ul
-                %li 30000円
-                %li
-                  %i.fa.fa-star.likeIcon 0
-              %p (税込)
-      .productList
-        %a{:href => "/products/2"}
-          %figure.productList--img
-            = image_tag asset_path('sample3.png')
-          .productList--body
-            %h3.name product2
-            .details
-              %ul
-                %li 20000円
-                %li
-                  %i.fa.fa-star.likeIcon 0
-              %p (税込)
-      .productList
-        %a{:href => "/products/1"}
-          %figure.productList--img
-            = image_tag asset_path('sample4.png')
-          .productList--body
-            %h3.name product1
-            .details
-              %ul
-                %li 10000円
-                %li
-                  %i.fa.fa-star.likeIcon 1
-              %p (税込)
+.pickupContainer
+  .pickupContainer__title
+    ピックアップカテゴリー
+  .pickupContainer__new-items
+    = link_to "新規投稿商品", "#", class:"pickupContainer__new-items--link"
+  %ul.pickupContainer__products
+    - @items_category.each_with_index do |item, n|
+      .pickupContainer__products__item
+        .pickupContainer__products__item__image
+          = link_to item_path(item) do
+            = image_tag item.images[0].src.url, size:'220x150'
+        .pickupContainer__products__item__name
+          = item.name[0,10]
+          - if item.name.size > 9
+            = "..."
+        .pickupContainer__products__item__info
+          .pickupContainer__products__item__info__price
+            = number_to_currency(item.price)
+            .pickupContainer__products__item__info__price__tax
+              (税込)
+            .pickupContainer__products__item__info__price__sale
+              - if item.trading_status == "出品中"
+                .pickupContainer__products__item__info__price__sale__blue
+                  出品中
+              - else
+                .pickupContainer__products__item__info__price__sale__red
+                  SOLD OUT
+
