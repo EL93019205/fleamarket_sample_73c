@@ -19,11 +19,10 @@
             .pickupContainer__products__item__info__price__tax
               (税込)
             .pickupContainer__products__item__info__price__sale
-              -# - if item.purchase
-              -#   SOLD OUT
-              -# - else
-              -#   出品中
-              .pickupContainer__products__item__info__price__sale__red
-                SOLD OUT
-              .pickupContainer__products__item__info__price__sale__blue
-                出品中
+              - if item.trading_status == "出品中"
+                .pickupContainer__products__item__info__price__sale__blue
+                  出品中
+              - else
+                .pickupContainer__products__item__info__price__sale__red
+                  SOLD OUT
+
