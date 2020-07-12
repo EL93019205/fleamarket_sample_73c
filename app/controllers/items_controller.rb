@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   before_action :set_category_grandchild, only: [:edit, :update]
   before_action :set_category_id, only: [:edit, :update, :show]
   def index
-    @items_category = Item.includes(:images).order('created_at DESC')
+    @items_category = Item.includes(:images).order('created_at DESC').limit(4)
     @items_brand = Item.includes(:images).order('created_at DESC')
   end
 

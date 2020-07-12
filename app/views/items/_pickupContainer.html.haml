@@ -6,21 +6,22 @@
   %ul.pickupContainer__products
     - @items_category.each_with_index do |item, n|
       .pickupContainer__products__item
-        .product-overview
-          .product-overview__image
-            = link_to item_path(item.id) do
-              = image_tag item.images[0].src.url, size:'190x150'
-          .product-overview__name
-            = item.name
-          .product-overview__info
-            .product-overview__info__price
-              = number_to_currency(item.price)
-              .product-overview__info__price__tax
-                (税込)
-              .product-overview__info__status
-                -# - if item.purchase
-                -#   SOLD OUT
-                -# - else
-                -#   出品中
+        .pickupContainer__products__item__image
+          = link_to item_path(item.id) do
+            = image_tag item.images[0].src.url, size:'220x150'
+        .pickupContainer__products__item__name
+          = item.name
+        .pickupContainer__products__item__info
+          .pickupContainer__products__item__info__price
+            = number_to_currency(item.price)
+            .pickupContainer__products__item__info__price__tax
+              (税込)
+            .pickupContainer__products__item__info__price__sale
+              -# - if item.purchase
+              -#   SOLD OUT
+              -# - else
+              -#   出品中
+              .pickupContainer__products__item__info__price__sale__red
                 SOLD OUT
+              .pickupContainer__products__item__info__price__sale__blue
                 出品中

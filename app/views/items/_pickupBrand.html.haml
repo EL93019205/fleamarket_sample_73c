@@ -4,23 +4,24 @@
   .pickupBrand__new-items
     = link_to "アーカイバ", "#", class:"pickupBrand__new-items--link"
   %ul.pickupBrand__products
-    - @items_brand.each_with_index do |item, n|
+    - @items_category.each_with_index do |item, n|
       .pickupBrand__products__item
-        .product-overview
-          .product-overview__image
-            = link_to item_path(item.id) do
-              = image_tag item.images[0].src.url, size:'190x150'
-          .product-overview__name
-            = item.name
-          .product-overview__info
-            .product-overview__info__price
-              = number_to_currency(item.price)
-              .product-overview__info__price__tax
-                (税込)
-              .product-overview__info__status
-                -# - if item.purchase
-                -#   SOLD OUT
-                -# - else
-                -#   出品中
+        .pickupBrand__products__item__image
+          = link_to item_path(item.id) do
+            = image_tag item.images[0].src.url, size:'220x150'
+        .pickupBrand__products__item__name
+          = item.name
+        .pickupBrand__products__item__info
+          .pickupBrand__products__item__info__price
+            = number_to_currency(item.price)
+            .pickupBrand__products__item__info__price__tax
+              (税込)
+            .pickupBrand__products__item__info__price__sale
+              -# - if item.purchase
+              -#   SOLD OUT
+              -# - else
+              -#   出品中
+              .pickupBrand__products__item__info__price__sale__red
                 SOLD OUT
+              .pickupBrand__products__item__info__price__sale__blue
                 出品中
