@@ -1,1 +1,30 @@
-購入ページでぇす！
+.purchase
+  .purchase__container
+    .purchase__container__top
+      購入内容の確認
+    .purchase__container__bottom
+      .purchase__container__bottom__center
+        .purchase__container__bottom__center__left
+          = image_tag @item.images[0].src.url, size:'120x110'
+        .purchase__container__bottom__center__right
+          .purchase__container__bottom__center__right__name
+            = @item.name
+          .purchase__container__bottom__center__right__price
+            = @item.shipping_price
+            (税込)
+            = "¥#{@item.price.to_s(:delimited, delimiter: ",")}"
+      .purchase__container__bottom__detail
+        .purchase__container__bottom__detail__name
+          支払い金額
+        .purchase__container__bottom__detail__price
+          = "¥#{@item.price.to_s(:delimited, delimiter: ",")}"
+      .purchase__container__bottom__submit
+      -if current_user.credit.nil?
+        = link_to new_user_credit_path(current_user.id), class: "show__container__middle__buy" do
+          ="購入画面に進む"
+      - else
+        = link_to root_path, class: "show__container__middle__buy" do
+          ="購入画面に進む"
+
+          
+
