@@ -60,6 +60,31 @@
           margin-right: 130px;
         }
       }
+      &__submit {
+        &__buy {
+          width: 170px;
+          height: 60px;
+          background-color: #3CCACE;
+          color: #fff;
+          line-height: 60px;
+          font-size: 20px;
+          font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+          font-weight: bold;
+          text-align: center;
+          text-decoration: none;
+          transition: 0.3s ;
+          margin-top: 70px;
+          display: inline-block;
+          margin-right: 190px;
+          padding: 0 5px 0 5px;
+          &:hover {
+            box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+            transform: translateY(-10px);
+            transition-duration: 0.5s;
+          }
+        }
+      }
     }
   }
 }
+

@@ -20,11 +20,11 @@
           = "¥#{@item.price.to_s(:delimited, delimiter: ",")}"
       .purchase__container__bottom__submit
       -if current_user.credit.nil?
-        = link_to new_user_credit_path(current_user.id), class: "show__container__middle__buy" do
-          ="購入画面に進む"
+        = link_to new_user_credit_path(current_user.id), class: "purchase__container__bottom__submit__buy" do
+          ="購入する"
       - else
-        = link_to root_path, class: "show__container__middle__buy" do
-          ="購入画面に進む"
+        = link_to root_path, class: "purchase__container__bottom__submit__buy" do
+          ="購入する"
 
           
 
