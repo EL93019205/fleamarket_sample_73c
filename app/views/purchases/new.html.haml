@@ -19,9 +19,5 @@
         .purchase__container__bottom__detail__price
           = "¥#{@item.price.to_s(:delimited, delimiter: ",")}"
       .purchase__container__bottom__submit
-      -if current_user.credit.nil?
-        = link_to new_user_credit_path(current_user.id), class: "purchase__container__bottom__submit__buy" do
-          ="購入する"
-      - else
-        = link_to root_path, class: "purchase__container__bottom__submit__buy" do
+        = link_to item_purchases_path(@item), method: :post, class: "purchase__container__bottom__submit__buy" do
           ="購入する"
