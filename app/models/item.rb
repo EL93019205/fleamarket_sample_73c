@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
 
   # validation
-  validates :name, :introduction, :price, 
+  validates :name, :introduction, :price,
     :category, :user, :condition, :trading_status,
     :shipping_area, :shipping_days, :shipping_price, presence: true
   validates_associated :images
@@ -9,6 +9,9 @@ class Item < ApplicationRecord
 
   validate :price_validate
   validates_numericality_of :price, message: "は半角数字を入力してください"
+
+  validates :price, numericality: { greater_than_or_equal_to: 50, message: "は50円以上にしてください" }
+  validates :price, numericality: { less_than_or_equal_to: 9999999, message: "は9,999,999円以下にしてください" }
 
   # association
 #  has_many :purchases
