@@ -116,6 +116,10 @@ GEM
     diff-lcs (1.4.2)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.9.0)
     erubis (2.7.0)
     excon (0.75.0)
@@ -147,6 +151,11 @@ GEM
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gon (6.3.2)
+      actionpack (>= 3.0.20)
+      i18n (>= 0.7)
+      multi_json
+      request_store (>= 1.0)
     haml (5.1.2)
       temple (>= 0.8.0)
       tilt
@@ -251,6 +260,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.7.1)
+    request_store (1.5.0)
+      rack (>= 1.4)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -365,9 +376,11 @@ DEPENDENCIES
   devise
   devise-i18n
   devise-i18n-views
+  dotenv-rails
   factory_bot_rails
   fog-aws
   font-awesome-sass
+  gon
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
