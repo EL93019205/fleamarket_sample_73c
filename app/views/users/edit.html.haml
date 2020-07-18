@@ -16,14 +16,15 @@
   .mypage__container
     .mypage__container__top
       = current_user.nickname + "のマイページ"
-      / クレジットカード情報がないとき
     .mypage__container__bottom
       .mypage__container__bottom__center
         -if @user.credit.nil?
+          / クレジットカード情報がないとき
           .mypage__container__bottom__center--submit
             = link_to new_user_credit_path(current_user.id), class: "mypage__container__bottom__center--submit--a" do
               = "クレジットカード登録"
         -else
+          / クレジットカード情報があるとき
           %table{border: "1"}
             %tr
               %th
@@ -36,16 +37,19 @@
                 セキュリティコード
             %tr
               %td
-                = @user.credit.card_fullname
+                仮
               %td
-                ●●●● ●●●● ●●●● ●●●●
+                仮
               %td
-                = @user.credit.expiration.strftime('%m/%y')
+                仮
               %td
-                ●●●●
+                仮
           .mypage__container__bottom__center--submit
             = link_to edit_user_credit_path(current_user, current_user.credit), class: "mypage__container__bottom__center--submit--a" do
               = "クレジットカード編集"
+          .mypage__container__bottom__center--submit
+            = link_to user_credit_path(current_user.id), method: :delete, class: "mypage__container__bottom__center--submit--a" do
+              = "クレジットカード削除"
 
 
 / クレジット情報があれば、新規登録画面を表示しないようにする
