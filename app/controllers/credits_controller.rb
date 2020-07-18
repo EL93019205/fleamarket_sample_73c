@@ -1,4 +1,5 @@
 class CreditsController < ApplicationController
+  require "payjp"
   before_action :authenticate_user!
   before_action :dont_other_user_new, only: [:new, :create]
   before_action :dont_other_user_edit, only: [:edit, :update]
@@ -6,16 +7,27 @@ class CreditsController < ApplicationController
   before_action :set_credit, only: [:edit, :update]
 
   def new
-    @credit = Credit.new
+    gon.public_key = Rails.application.credentials[:payjp][:public]
   end
 
   def create
-    @credit = Credit.new(credit_params)
-    if @credit.save
-      redirect_to edit_user_path(@user), notice: 'クレジットカード情報を登録しました'
+    Payjp.api_key = Rails.application.credentials[:payjp][:private]
+    if params["payjp-token"].blank?
+      redirect_to edit_user_path(@user), error: 'クレジットカードを登録してください'
     else
-      render :new
+      customer = Payjp::Customer.create(
+        email: current_user.email,
+        card: params["payjp-token"],
+        metadata: {user_id: current_user.id }
+      )
+      @credit = Credit.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @credit.save
+        redirect_to edit_user_path(@user), notice: 'クレジットカード情報を登録しました'
+      else
+        render :new, error: "クレジットカード情報が正しくありません"
+      end
     end
+
   end
 
   def edit
@@ -29,11 +41,15 @@ class CreditsController < ApplicationController
     end
   end
 
-  private
-
-  def credit_params
-    params.require(:credit).permit(:card_fullname, :card_number, :expiration, :security_code).merge(user_id: params[:user_id])
+  def destroy
+    card = current_user.credit
+    customer = Payjp::Customer.retrieve(card.customer_id)
+    customer.delete
+    card.delete
+    redirect_to edit_user_path(current_user.id), notice: "クレジットカード情報を削除しました"
   end
+
+  private
 
   def dont_other_user_edit
     # アクセスIDとログインIDが不一致
