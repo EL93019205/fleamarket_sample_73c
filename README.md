@@ -56,10 +56,8 @@
 ## creditsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_fullname|string|null:false|
-|card_number|varchar(16)|null:false, unique:true|
-|expiration|date|null:false|
-|security_code|varchar(4)|null:false|
+|card_id|string|null:false|
+|customer_id|string|null:false|
 |user|references|null:false, uinque: ture, foreign_key:true|
 ### Association
 - belongs_to :user
