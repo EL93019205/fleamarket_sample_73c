@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:edit] do
-    resources :credits, only: [:new, :create, :edit, :update]
+    resources :credits, only: [:new, :create, :edit, :update, :destroy]
   end
 
   get 'users/:id/logout', to: 'users#logout'
