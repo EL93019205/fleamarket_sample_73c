@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :credits, only: [:new, :create, :edit, :update]
   end
 
+  get 'users/:id/logout', to: 'users#logout'
+
   root 'items#index'
   resources :items do
     # Ajaxで動くアクションのルート
