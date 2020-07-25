@@ -24,26 +24,6 @@
             = link_to new_user_credit_path(current_user.id), class: "mypage__container__bottom__center--submit--a" do
               = "クレジットカード登録"
         -else
-          / クレジットカード情報があるとき
-          %table{border: "1"}
-            %tr
-              %th
-                カード名
-              %th
-                カード番号
-              %th
-                有効期限
-              %th
-                セキュリティコード
-            %tr
-              %td
-                仮
-              %td
-                仮
-              %td
-                仮
-              %td
-                仮
           .mypage__container__bottom__center--submit
             = link_to edit_user_credit_path(current_user, current_user.credit), class: "mypage__container__bottom__center--submit--a" do
               = "クレジットカード編集"
