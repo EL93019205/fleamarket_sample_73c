@@ -91,3 +91,10 @@ gem 'devise-i18n-views'
 
 # カテゴリ機能
 gem 'ancestry'
+
+# クレジット情報
+gem 'payjp'
+
+# javascriptで環境変数を参照
+gem 'gon'
+gem 'dotenv-rails'

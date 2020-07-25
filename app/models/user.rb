@@ -9,31 +9,13 @@ class User < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :purchases
 
-  # 必須項目(空欄禁止)  
+  # 必須項目(空欄禁止)
   #passwordとemailは一旦削除する。
   validates :nickname, :password_confirmation, :family_name, :first_name,
             :family_name_kana, :first_name_kana, :birthday,
             :d_family_name, :d_first_name, :d_family_name_kana, :d_first_name_kana,
             :zipcode, :prefecture, :city, :address,
             presence: true
-
-  # メールアドレス重複防止
-  #deviceのvalidationで実装済みの可能性がある為一旦コメントアウト。
-  # validates :email, uniqueness: true
-
-  # メールアドレス関連
-  # validates :email,
-  #   length: { maximum: 255 },
-  #   format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i, message: '有効なメールアドレスを入力してください' },
-  #   uniqueness: { case_sensitive: false }
-
-  # パスワード関連
-  #devise用のファイルで設定できる可能性があるためにいったんコメントアウト。
-  # devise :validatable, password_length:7..15
-
-  #deviceのvalidationで実装済みの可能性がある為一旦コメントアウト。
-  # validates :encrypted_password,
-  #   format: { with: /\A[a-z0-9]+\z/i, message: '7文字以上の半角英数字' }
 
   # 名前関連
   validates :family_name,
@@ -61,7 +43,7 @@ class User < ApplicationRecord
   validates :zipcode,
     format: { with: /\A\d{7}\z/, message: "をハイフン(-)無しで７桁の半角数字で入力してください" }
 
-  # 都道府県 
+  # 都道府県
   enum prefecture: {
     "選択してください":0,
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

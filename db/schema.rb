@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_093651) do
+ActiveRecord::Schema.define(version: 2020_07_18_085522) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -20,13 +20,11 @@ ActiveRecord::Schema.define(version: 2020_07_05_093651) do
   end
 
   create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "card_fullname", null: false
-    t.string "card_number", limit: 16, null: false
-    t.string "security_code", limit: 4, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "expiration", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
     t.index ["user_id"], name: "index_credits_on_user_id"
   end
 
@@ -54,6 +52,15 @@ ActiveRecord::Schema.define(version: 2020_07_05_093651) do
     t.string "brand"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_purchases_on_item_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -88,4 +95,6 @@ ActiveRecord::Schema.define(version: 2020_07_05_093651) do
   add_foreign_key "images", "items"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
+  add_foreign_key "purchases", "items"
+  add_foreign_key "purchases", "users"
 end

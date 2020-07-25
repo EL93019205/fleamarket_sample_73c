@@ -8,7 +8,6 @@
 # レディース
 user1 = User.create(nickname: "あ", password: "aaaaaaaa", password_confirmation: "aaaaaaaa", email: "aaa@aaa.aaa", family_name: "あ", first_name: "あ", family_name_kana: "ア", first_name_kana: "ア", birthday: "2020-06-28 00:00:00.000000", d_family_name: "あ", d_first_name: "あ", d_family_name_kana: "ア", d_first_name_kana: "ア", zipcode: "0000000", prefecture: "愛知県", city: "名古屋市", address: "中区栄", building_name: "栄センタービル3F", phone_number: "01234567890" )
 user2 = User.create(nickname: "い", password: "bbbbbbbb", password_confirmation: "bbbbbbbb", email: "bbb@bbb.bbb", family_name: "い", first_name: "い", family_name_kana: "イ", first_name_kana: "イ", birthday: "2020-06-28 00:00:00.000000", d_family_name: "い", d_first_name: "い", d_family_name_kana: "イ", d_first_name_kana: "イ", zipcode: "0000000", prefecture: "愛知県", city: "名古屋市", address: "中区栄", building_name: "栄センタービル3F", phone_number: "01234567890" )
-Credit.create(card_fullname: "A A", card_number: "0000000000000000", expiration: "2022-01-01 00:00:00.000000", security_code: "0000", user_id: user2.id )
 
 lady = Category.create(name: "レディース")
 lady_1 = lady.children.create(name: "トップス")

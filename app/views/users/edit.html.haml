@@ -6,39 +6,30 @@
 /= link_to "クレジット情報を編集する(テスト用)", edit_user_credit_path(current_user.id)
 
 .mypage
+  %ul{class: 'mypage__sidebar'}
+    %li{class: 'mypage__sidebar__item--active'}
+      = link_to edit_user_path(@user) do
+        = "クレジットカード情報"
+    %li{class: 'mypage__sidebar__item'}
+      = link_to "logout" do
+        = "ログアウト"
   .mypage__container
     .mypage__container__top
       = current_user.nickname + "のマイページ"
-      / クレジットカード情報がないとき
     .mypage__container__bottom
       .mypage__container__bottom__center
         -if @user.credit.nil?
+          / クレジットカード情報がないとき
           .mypage__container__bottom__center--submit
             = link_to new_user_credit_path(current_user.id), class: "mypage__container__bottom__center--submit--a" do
               = "クレジットカード登録"
         -else
-          %table{border: "1"}
-            %tr
-              %th
-                カード名
-              %th
-                カード番号
-              %th
-                有効期限
-              %th
-                セキュリティコード
-            %tr
-              %td
-                = @user.credit.card_fullname
-              %td
-                ●●●● ●●●● ●●●● ●●●●
-              %td
-                = @user.credit.expiration.strftime('%m/%y')
-              %td
-                ●●●●
           .mypage__container__bottom__center--submit
             = link_to edit_user_credit_path(current_user, current_user.credit), class: "mypage__container__bottom__center--submit--a" do
               = "クレジットカード編集"
+          .mypage__container__bottom__center--submit
+            = link_to user_credit_path(current_user.id), method: :delete, class: "mypage__container__bottom__center--submit--a" do
+              = "クレジットカード削除"
 
 
 / クレジット情報があれば、新規登録画面を表示しないようにする

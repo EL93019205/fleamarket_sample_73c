@@ -1,12 +1,52 @@
 .mypage{
   width: 100%;
   padding: 0;
+  margin: 0 auto;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  display: flex;
+  justify-content: center;
   background-color: #F5F5F5;
+  &__sidebar{
+    width: 280px;
+    margin: 0 40px 0 0;
+    :first-child {
+      border-radius: 10px 10px 0px 0px
+    }
+    :last-child {
+      border-radius: 0px 0px 10px 10px
+    }
+    &__item--active {
+      background: #eee;
+      font-weight: 600;
+      border-top: 1px solid #eee;
+      a {
+        display: block;
+        min-height: 48px;
+        padding: 16px;
+        font-size: 14px;
+        text-decoration: none;
+        color: #333;
+      }
+    }
+    &__item {
+      background: #fff;
+      border-top: 1px solid #eee;
+      :hover {
+        background: #fafafa;
+      }
+      a {
+        display: block;
+        min-height: 48px;
+        padding: 16px;
+        font-size: 14px;
+        text-decoration: none;
+        color: #333;
+      }
+    }
+  }
   &__container{
     width: 700px;
-    margin: 0 auto;
-    padding-top: 64px;
-    padding-bottom: 64px;
     background-color: #F5F5F5;
     &__top{
       background-color: white;

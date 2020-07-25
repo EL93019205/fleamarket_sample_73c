@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:edit] do
-    resources :credits, only: [:new, :create, :edit, :update]
+    resources :credits, only: [:new, :create, :edit, :update, :destroy]
   end
+
+  get 'users/:id/logout', to: 'users#logout'
 
   root 'items#index'
   resources :items do
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
+    resources :purchases, only: [:new, :create]
   end
   get 'get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
   get 'get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }

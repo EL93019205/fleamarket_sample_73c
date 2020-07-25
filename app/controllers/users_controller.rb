@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def logout
+    @user = User.find(params[:id])
+  end
+
 private
 
 def correct_user

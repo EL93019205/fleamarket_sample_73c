@@ -1,0 +1,85 @@
+.credit
+  .credit__container
+    .credit__container__top
+      = article
+    .credit__container__bottom
+      .credit__container__bottom__center
+        = form_tag(user_credits_path, method: :post, id: "charge-form", name: "inputForm" ) do
+          .credit__container__bottom__center__card
+            %label{class:"credit__container__bottom__center__card--label", for: "card_number"} カード番号
+            %br/
+            = text_field_tag "number", "", class: 'credit__container__bottom__center__card--input', type: "text", id: 'card_number', maxlength: "16", placeholder: "例)1234567891234567"
+            %ul
+              %li
+                = image_tag "visa.svg", width:"49", height:"20"
+              %li
+                = image_tag "master-card.svg", width:"34", height:"20"
+              %li
+                = image_tag "saison-card.svg", width:"30", height:"20"
+              %li
+                = image_tag "jcb.svg", width:"32", height:"20"
+              %li
+                = image_tag "american_express.svg", width:"21", height:"20"
+              %li
+                = image_tag "dinersclub.svg", width:"32", height:"20"
+              %li
+                = image_tag "discover.svg", width:"32", height:"20"
+            .credit__container__bottom__center__card--required
+              必須
+
+
+          .credit__container__bottom__center__card
+            /= f.label :expiration, class: "credit__container__bottom__center__card--label"
+            %label.credit__container__bottom__center__card--label 有効期限
+            %br/
+            /= f.date_select :expiration, class: "credit__container__bottom__center__card--input--tri", order:[:month,:year,:day],use_month_numbers: true, discard_day:true, start_year: (Time.now.year - 2000), end_year: (Time.now.year - 2000+10), prompt: "--"
+            .credit__container__bottom__center__card--input--tri
+              %select#exp_month{name: "exp_month", type: "text"}
+                %option{value: "1"}01
+                %option{value: "2"}02
+                %option{value: "3"}03
+                %option{value: "4"}04
+                %option{value: "5"}05
+                %option{value: "6"}06
+                %option{value: "7"}07
+                %option{value: "8"}08
+                %option{value: "9"}09
+                %option{value: "10"}10
+                %option{value: "11"}11
+                %option{value: "12"}12
+              %select#exp_year{name: "exp_year", type: "text"}
+                %option{value: "2020"}20
+                %option{value: "2021"}21
+                %option{value: "2022"}22
+                %option{value: "2023"}23
+                %option{value: "2024"}24
+                %option{value: "2025"}25
+                %option{value: "2026"}26
+                %option{value: "2027"}27
+                %option{value: "2028"}28
+                %option{value: "2029"}29
+                %option{value: "2030"}30
+            .credit__container__bottom__center__card--month
+              月
+            .credit__container__bottom__center__card--year
+              年
+            .credit__container__bottom__center__card--required
+              必須
+
+          .credit__container__bottom__center__card
+            /= f.label :security_code, class: "credit__container__bottom__center__card--label"
+            %label.credit__container__bottom__center__card--label{for: "cvc"} セキュリティコード
+            %br/
+            /= f.text_field :security_code,  autocomplete: "security_code", maxlength: "4", placeholder: "例)1234", class: "credit__container__bottom__center__card--input"
+            = text_field_tag "cvc", "", class: "credit__container__bottom__center__card--input", type: "text", id: "cvc", maxlength: "4", placeholder: "例)1234"
+            .credit__container__bottom__center__card--required
+              必須
+
+          .credit__container__bottom__center__card
+            /= f.submit "登録", class: "credit__container__bottom__center__card--submit"
+            #card_token
+              = submit_tag "登録", class: "credit__container__bottom__center__card--submit", id: "token_submit", type: 'button'
+
+        .credit__container__bottom__center__card--submit
+          = link_to edit_user_path(current_user.id), class: "credit__container__bottom__center__card--submit--a" do
+            ="キャンセル"

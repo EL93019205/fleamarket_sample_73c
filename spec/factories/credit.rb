@@ -1,10 +1,8 @@
 FactoryBot.define do
 
   factory :credit do
-    card_fullname         {"TAROU YAMADA"}
-    card_number           {"0000000000000000"}
-    security_code         {"0000"}
-    expiration            {"2022-01-01 00:00:00.000000"}
+    customer_id           {"cus_bbc8050218b02773e537373b4828"}
+    card_id               {"car_551709579796f136cdcd223d6930"}
     user
   end
 

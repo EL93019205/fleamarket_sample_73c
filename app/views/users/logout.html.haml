@@ -1,0 +1,16 @@
+.mypage
+  %ul{class: 'mypage__sidebar'}
+    %li{class: 'mypage__sidebar__item'}
+      = link_to edit_user_path(@user) do
+        = "クレジットカード情報"
+    %li{class: 'mypage__sidebar__item--active'}
+      = link_to "logout" do
+        = "ログアウト"
+  .mypage__container
+    .mypage__container__top
+      = current_user.nickname + "のマイページ"
+    .mypage__container__bottom
+      .mypage__container__bottom__center
+        .mypage__container__bottom__center--submit
+          = link_to sign_out_path, class: "mypage__container__bottom__center--submit--a" do
+            = "ログアウト"
