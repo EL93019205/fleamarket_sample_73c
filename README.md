@@ -1,3 +1,5 @@
+<img width="1174" alt="DB" src="https://user-images.githubusercontent.com/59168351/90976401-b80dc300-e577-11ea-9fb1-e650f676cc0b.png">
+
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
